@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       Height="800"
       Width="1200"
-      Header="Actualizar catálogos">
+      Header="Actualizar catálogos" WindowStartupLocation="CenterScreen">
     <telerik:RadBusyIndicator x:Name="radBusyIndicator">
         <Grid>
 

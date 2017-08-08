@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClarisaApp.Views"
         mc:Ignorable="d"
-        Header="Scripts" Height="auto" Width="auto">
+        Header="Scripts" Height="auto" Width="auto" WindowStartupLocation="CenterScreen">
 
     <Grid Margin="10,10,10,10">
         <Grid.ColumnDefinitions>
@@ -25,7 +25,7 @@
         <telerik:RadRadioButton x:Name="chkDeshabilitar" Grid.Column="1" Grid.Row="0" Checked="RadRadioButton_Checked_1">Deshabilitar todos</telerik:RadRadioButton>
        
         <ListBox x:Name="lstScripts" SelectionMode="Multiple" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"  Width="200" Height="300" Margin="0,0,0,10">
-            <ListBoxItem>Politicas de pago</ListBoxItem>
+           
             <ListBoxItem>Script 1</ListBoxItem>
             <ListBoxItem>Script 2</ListBoxItem>
             <ListBoxItem>Script 3</ListBoxItem>
@@ -42,6 +42,8 @@
             <ListBoxItem>Script 14</ListBoxItem>
             <ListBoxItem>Script 15</ListBoxItem>
             <ListBoxItem>Script 16</ListBoxItem>
+            <ListBoxItem>Script 17</ListBoxItem>
+            <ListBoxItem>Politicas de pago</ListBoxItem>
             <ListBoxItem>Script 18</ListBoxItem>
             <ListBoxItem>Script 19</ListBoxItem>
             <ListBoxItem>Script 20</ListBoxItem>

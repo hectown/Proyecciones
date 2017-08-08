@@ -77,49 +77,127 @@ namespace ClarisaApp.Views
                 if (dtEjecutor.Rows.Count != 0)
                 {
                     //ACTUALIZA EJECUTOR
-                    foreach (var item in lstScripts.SelectedItems)
+                    foreach (ListBoxItem item in lstScripts.SelectedItems)
                     {
 
-                       var a=  item.ToString();
-                       
-                      
-                        datos.CalendarizarEjecutor1(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor2(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor3(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor4(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor5(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor6(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor7(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor8(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor9(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor10(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor11(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor12(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor13(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor14(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor15(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor16(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor17(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        var valor = item.Content.ToString();
 
-                        //Politicas de Pago
-                        datos.CalendarizarPolitica180(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarPolitica120(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarPolitica90(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarPolitica60(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarPolitica45(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarPolitica2030(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        if (valor == "Script 1")
+                        {
+                            datos.CalendarizarEjecutor1(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 2")
+                        {
+                            datos.CalendarizarEjecutor2(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 3")
+                        {
+                            datos.CalendarizarEjecutor3(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 4")
+                        {
+                            datos.CalendarizarEjecutor4(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 5")
+                        {
+                            datos.CalendarizarEjecutor5(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 6")
+                        {
+                            datos.CalendarizarEjecutor6(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 7")
+                        {
+                            datos.CalendarizarEjecutor7(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 8")
+                        {
+                            datos.CalendarizarEjecutor8(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 9")
+                        {
+                            datos.CalendarizarEjecutor9(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 10")
+                        {
+                            datos.CalendarizarEjecutor10(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 11")
+                        {
+                            datos.CalendarizarEjecutor11(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 12")
+                        {
+                            datos.CalendarizarEjecutor12(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 13")
+                        {
+                            datos.CalendarizarEjecutor13(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 14")
+                        {
+                            datos.CalendarizarEjecutor14(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 15")
+                        {
+                            datos.CalendarizarEjecutor15(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 16")
+                        {
+                            datos.CalendarizarEjecutor16(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 17")
+                        {
+                            datos.CalendarizarEjecutor17(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
 
+                        if (valor == "Politicas de pago")
+                        {
+                            //Politicas de Pago
+                            datos.CalendarizarPolitica180(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                            datos.CalendarizarPolitica120(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                            datos.CalendarizarPolitica90(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                            datos.CalendarizarPolitica60(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                            datos.CalendarizarPolitica45(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                            datos.CalendarizarPolitica2030(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
 
-
-                        datos.CalendarizarEjecutor18(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor19(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor20(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor21(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor22(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor23(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor24(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor25(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                        datos.CalendarizarEjecutor26(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        if (valor == "Script 18")
+                        {
+                            datos.CalendarizarEjecutor18(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 19")
+                        {
+                            datos.CalendarizarEjecutor19(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 20")
+                        {
+                            datos.CalendarizarEjecutor20(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 21")
+                        {
+                            datos.CalendarizarEjecutor21(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 22")
+                        {
+                            datos.CalendarizarEjecutor22(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 23")
+                        {
+                            datos.CalendarizarEjecutor23(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 24")
+                        {
+                            datos.CalendarizarEjecutor24(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 25")
+                        {
+                            datos.CalendarizarEjecutor25(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 26")
+                        {
+                            datos.CalendarizarEjecutor26(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
 
                     }
                 }
@@ -128,54 +206,139 @@ namespace ClarisaApp.Views
                     //INSERTA EJECUTOR
                     datos.CalendarizarEjecutor(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
 
-                    datos.CalendarizarEjecutor1(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor2(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor3(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor4(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor5(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor6(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor7(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor8(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor9(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor10(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor11(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor12(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor13(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor14(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor15(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor16(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor17(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                    foreach (ListBoxItem item in lstScripts.SelectedItems)
+                    {
 
+                        var valor = item.Content.ToString();
 
-                    //Politicas de Pago
-                    datos.CalendarizarPolitica180(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarPolitica120(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarPolitica90(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarPolitica60(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarPolitica45(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarPolitica2030(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        if (valor == "Script 1")
+                        {
+                            datos.CalendarizarEjecutor1(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 2")
+                        {
+                            datos.CalendarizarEjecutor2(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 3")
+                        {
+                            datos.CalendarizarEjecutor3(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 4")
+                        {
+                            datos.CalendarizarEjecutor4(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 5")
+                        {
+                            datos.CalendarizarEjecutor5(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 6")
+                        {
+                            datos.CalendarizarEjecutor6(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 7")
+                        {
+                            datos.CalendarizarEjecutor7(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 8")
+                        {
+                            datos.CalendarizarEjecutor8(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 9")
+                        {
+                            datos.CalendarizarEjecutor9(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 10")
+                        {
+                            datos.CalendarizarEjecutor10(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 11")
+                        {
+                            datos.CalendarizarEjecutor11(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 12")
+                        {
+                            datos.CalendarizarEjecutor12(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 13")
+                        {
+                            datos.CalendarizarEjecutor13(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 14")
+                        {
+                            datos.CalendarizarEjecutor14(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 15")
+                        {
+                            datos.CalendarizarEjecutor15(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 16")
+                        {
+                            datos.CalendarizarEjecutor16(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 17")
+                        {
+                            datos.CalendarizarEjecutor17(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
 
+                        if (valor == "Politicas de pago")
+                        {
+                            //Politicas de Pago
+                            datos.CalendarizarPolitica180(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                            datos.CalendarizarPolitica120(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                            datos.CalendarizarPolitica90(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                            datos.CalendarizarPolitica60(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                            datos.CalendarizarPolitica45(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                            datos.CalendarizarPolitica2030(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
 
-                    datos.CalendarizarEjecutor18(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor19(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor20(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor21(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor22(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor23(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor24(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor25(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
-                    datos.CalendarizarEjecutor26(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        if (valor == "Script 18")
+                        {
+                            datos.CalendarizarEjecutor18(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 19")
+                        {
+                            datos.CalendarizarEjecutor19(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 20")
+                        {
+                            datos.CalendarizarEjecutor20(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 21")
+                        {
+                            datos.CalendarizarEjecutor21(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 22")
+                        {
+                            datos.CalendarizarEjecutor22(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 23")
+                        {
+                            datos.CalendarizarEjecutor23(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 24")
+                        {
+                            datos.CalendarizarEjecutor24(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 25")
+                        {
+                            datos.CalendarizarEjecutor25(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
+                        if (valor == "Script 26")
+                        {
+                            datos.CalendarizarEjecutor26(Convert.ToDecimal(lblTitulo.Content), Convert.ToDecimal(lblPOM.Content), FechaInicio, FechaFin, sNombre);
+                        }
 
+                    }
 
 
 
                 }
 
 
-
+                this.Close();
                 var alert = new RadDesktopAlert();
                 alert.Header = "NOTIFICACIÓN";
-                alert.Content = "El Ejecutor se calendarizó con exito.";
+                alert.Content = "El Ejecutor se calendarizó.";
                 RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
 
