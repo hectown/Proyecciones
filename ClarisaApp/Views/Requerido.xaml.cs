@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Telerik.Windows.Controls;
+using Telerik.Windows.Controls.GridView;
 using Telerik.Windows.Documents.Core;
 using Telerik.Windows.Documents.Fixed;
 using Telerik.Windows.Documents.Spreadsheet;
@@ -96,5 +97,27 @@ namespace ClarisaApp.Views
             }
         }
 
+        private void gvData_RowLoaded(object sender, Telerik.Windows.Controls.GridView.RowLoadedEventArgs e)
+        {
+            int countC = e.Row.Cells.Count;
+            for (int i = 0; i < countC; i++)
+            {
+
+                var _cell = e.Row.Cells[i];
+                if (_cell.DataContext.ToString() == "System.Data.DataRow")
+                {
+                    GridViewCell _cellValid = (GridViewCell)e.Row.Cells[i];
+
+                    if (_cellValid.Value == null)
+                    {
+                        var converter = new System.Windows.Media.BrushConverter();
+                        var brush = (Brush)converter.ConvertFromString("#D32F2F");
+                        e.Row.Cells[i].Background = brush;
+                    }
+                }
+
+
+            }
+        }
     }
 }
