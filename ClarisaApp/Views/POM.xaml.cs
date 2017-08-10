@@ -72,6 +72,7 @@ namespace ClarisaApp.Views
                     category.Cursor = Cursors.Hand;
                     if(cat.Field<string>("Nombre")=="Ejecutores")
                     {
+                        
                         category.ToolTip = "Da click para agregar mas ejecutores.";
                     }
                     
@@ -121,24 +122,38 @@ namespace ClarisaApp.Views
                         NewPage.MyVar = Convert.ToInt32(tvi.Uid);
                         MainFramePOM.NavigationService.Navigate(NewPage);
                         lblTitulo.Content = "Agregar nuevo ejecutor";
+                        BitmapImage defaultImage = new BitmapImage(new Uri("/Icons/iconEjecutor.png", UriKind.Relative));
+                   
+                        imagen.Source = defaultImage;
                     }
                     else if (Convert.ToString(item) == "Requerido")
                     {
                         MainFramePOM.NavigationService.Navigate(new Requerido(Convert.ToDecimal(lblPOM.Content)));
                         lblTitulo.Content = "Requerido";
+                        BitmapImage defaultImage = new BitmapImage(new Uri("/Icons/iconRequerido.jpg", UriKind.Relative));
+                       
+                        imagen.Source = defaultImage;
                     }
                     else if(Convert.ToString(item) =="Primer Ajuste")
                     {
                         MainFramePOM.NavigationService.Navigate(new Ajuste(Convert.ToDecimal(lblPOM.Content)));
                         lblTitulo.Content = "Ajuste por pozo";
+                        BitmapImage defaultImage = new BitmapImage(new Uri("/Icons/iconRequerido.jpg", UriKind.Relative));
+                     
+                        imagen.Source = defaultImage;
                     }
                     else
                     {
                         DAL.Datos datos = new DAL.Datos();
 
                         DataTable dt = datos.ObtenerNombreEjecutor(Convert.ToDecimal(tvi.Uid)).Tables[0];
+                   
+                        BitmapImage defaultImage = new BitmapImage(new Uri("/Icons/iconEjecutor.png", UriKind.Relative));
+                       
+                        imagen.Source = defaultImage;
 
-                        foreach(DataRow row in dt.Rows)
+
+                        foreach (DataRow row in dt.Rows)
                         {
                             lblTitulo.Content = row["Nombre"].ToString();
                         }
@@ -158,8 +173,38 @@ namespace ClarisaApp.Views
 
         }
 
-     
+        private void radTreeViewPOM_ItemPrepared(object sender, RadTreeViewItemPreparedEventArgs e)
+        {
+            if (e.PreparedItem.Header.ToString() == "Ejecutores")
+            {
+                BitmapImage defaultImage = new BitmapImage(new Uri("/Icons/iconEjecutor.png", UriKind.Relative));
+                e.PreparedItem.DefaultImageSrc = defaultImage;
+                BitmapImage expandedImage = new BitmapImage(new Uri("/Icons/iconEjecutor.png", UriKind.Relative));
+                e.PreparedItem.ExpandedImageSrc = expandedImage;
+                BitmapImage selectedImage = new BitmapImage(new Uri("/Icons/iconEjecutor.png", UriKind.Relative));
+                e.PreparedItem.SelectedImageSrc = selectedImage;
+            }
+            else if (e.PreparedItem.Header.ToString() == "Requerido" || e.PreparedItem.Header.ToString() == "Primer Ajuste")
+            {
+                BitmapImage defaultImage = new BitmapImage(new Uri("/Icons/iconRequerido.jpg", UriKind.Relative));
+                e.PreparedItem.DefaultImageSrc = defaultImage;
+                BitmapImage expandedImage = new BitmapImage(new Uri("/Icons/iconRequerido.jpg", UriKind.Relative));
+                e.PreparedItem.ExpandedImageSrc = expandedImage;
+                BitmapImage selectedImage = new BitmapImage(new Uri("/Icons/iconRequerido.jpg", UriKind.Relative));
+                e.PreparedItem.SelectedImageSrc = selectedImage;
+            }
 
 
+        }
+
+        private void Image_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            BitmapImage defaultImage = new BitmapImage(new Uri("/Icons/iconEjecutor.jpg", UriKind.Relative));
+            // ... Get Image reference from sender.
+            var image = sender as Image;
+            // ... Assign Source.
+            image.Source = defaultImage;
+        }
     }
 }

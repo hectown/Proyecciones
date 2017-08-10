@@ -221,6 +221,7 @@
     <Resource Include="Icons\Email.png" />
     <Resource Include="Icons\FullScreen.png" />
     <Resource Include="Icons\Help.png" />
+    <Resource Include="Icons\iconEjecutor.png" />
     <Resource Include="Icons\Left.png" />
     <Resource Include="Icons\New.png" />
     <Resource Include="Icons\Open.png" />
@@ -272,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\catalog.png" />
+    <Resource Include="Icons\iconRequerido.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
