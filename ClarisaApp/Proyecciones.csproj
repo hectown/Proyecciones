@@ -223,6 +223,7 @@
     <Resource Include="Icons\Help.png" />
     <Resource Include="Icons\iconEjecutor.png" />
     <Resource Include="Icons\Left.png" />
+    <Resource Include="Icons\logo2.png" />
     <Resource Include="Icons\New.png" />
     <Resource Include="Icons\Open.png" />
     <Resource Include="Icons\Paste.png" />
@@ -273,7 +274,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\catalog.png" />
-    <Resource Include="Icons\logo2.png" />
     <Resource Include="Icons\iconRequerido.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
