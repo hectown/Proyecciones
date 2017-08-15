@@ -33,6 +33,7 @@ namespace ClarisaApp.Views
     /// </summary>
     public partial class Requerido : Page
     {
+        string nameBD;
         public Requerido(decimal idPOM)
         {
             InitializeComponent();
@@ -64,6 +65,7 @@ namespace ClarisaApp.Views
             }else
             {
                 gvData.ItemsSource = datos.ObtenerRequerido(sNombre).Tables[0];
+                nameBD = sNombre;
             }
            
            
@@ -118,6 +120,27 @@ namespace ClarisaApp.Views
 
 
             }
+        }
+
+        private void gvData_CellEditEnded(object sender, GridViewCellEditEndedEventArgs e)
+        {
+
+            DAL.Datos datos = new DAL.Datos();
+            GridViewCell cl = (GridViewCell)e.Cell;
+            TextBox t = (TextBox)e.EditingElement;
+            Int32 c = e.Cell.TabIndex;
+
+            GridViewCell _id= (GridViewCell)e.Cell.ParentRow.Cells[0];
+
+            RadGridView _gv = (RadGridView)e.Source;
+
+            string _columnHeader = _gv.CurrentColumn.Header.ToString();
+            datos.UpdateRequerido(nameBD, _id.Value.ToString(),  _columnHeader, t.Text);
+
+            //gvData.Rebind();
+            //datos.ObtenerRequerido(sNombre).Tables[0];
+
+            //MessageBox.Show(_id.Value.ToString());
         }
     }
 }

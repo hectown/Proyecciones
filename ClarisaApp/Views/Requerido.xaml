@@ -46,7 +46,7 @@
             </Grid>
 
 
-            <telerik:RadGridView Grid.Row="1" Name="gvData" RowLoaded="gvData_RowLoaded"/>
+            <telerik:RadGridView Grid.Row="1" Name="gvData" RowLoaded="gvData_RowLoaded" CellEditEnded="gvData_CellEditEnded"/>
             <telerik:RadDataPager Grid.Row="2" Name="gvDataPager" Source="{Binding Items,ElementName=gvData}" PageSize="20"/>
 
         </Grid>

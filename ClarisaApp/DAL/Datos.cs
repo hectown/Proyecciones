@@ -2631,6 +2631,44 @@ namespace ClarisaApp.DAL
         }
         #endregion
 
+        #region UPDATE REQUERIDO
+        public void UpdateRequerido(string sNombreTabla, string id, string column, string value)
+        {
+            try
+            {
+                string q = "";
+                OleDbConnection con = new OleDbConnection();
+                //OleDbCommand comando;
+                con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "\\BaseDeDatos.accdb";
+
+                con.Open();
+
+
+                q = @"UPDATE " + sNombreTabla + @" set " +
+                 column +   @" = '" + value + @"' " +
+                 @"where id=" + id;
+                //string query = "SELECT * FROM " + sNombreTabla + " ORDER BY idEjecutores DESC";
+
+                OleDbCommand comando = new OleDbCommand(q, con);
+
+                comando.Parameters.Clear();
+               
+                comando.ExecuteNonQuery();
+
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                var alert = new RadDesktopAlert();
+                alert.Header = "NOTIFICACIÓN";
+                alert.Content = ex;
+                alert.CanAutoClose = false;
+
+            }
+        }
+        #endregion
+
         #region AJUSTE
         public DataSet CrearTablaAjusteporPozo(decimal idPOM, string nombreTabla,decimal FechaIni, decimal FechaFin)
         {
