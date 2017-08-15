@@ -202,9 +202,11 @@ namespace ClarisaApp.DAL
            
                 //SI es exitoso guarda en catalogo, crea la estructura
                 GuardarPOMEstructura(sNombre);
+               
             }
             catch (Exception ex)
             {
+                
                 var alert = new RadDesktopAlert();
                 alert.Header = "NOTIFICACIÓN";
                 alert.Content = ex;

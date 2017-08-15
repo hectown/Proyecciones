@@ -24,7 +24,7 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                    <Image Grid.Row="0" Grid.Column="0" Source="/Icons/logo.png" Width="143" Height="20"/>
+                    <Image Grid.Row="0" Grid.Column="0" Source="/Icons/logo2.png" Width="143" Height="20"/>
                     <DockPanel Grid.Row="0" Grid.Column="1">
                             <ToolBar DockPanel.Dock="Top" Height="28">
                                 <Button ToolTip="Nuevo POM" Click="ButtonNuevo_Click">
