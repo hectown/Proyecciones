@@ -47,7 +47,7 @@ namespace ClarisaApp.Views
             llenarGridEjecutores(idEjecutor);
             lblTitulo.Content = idEjecutor;
             lblPOM.Content = idPOM;
-            btCancelar.Visibility = Visibility.Hidden;
+         
 
         }
 
@@ -90,6 +90,30 @@ namespace ClarisaApp.Views
 
         }
 
-       
+        private void btBorrar_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("¿Estas seguro de borrar el ejecutor?", "Atención", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                Datos datos = new DAL.Datos();
+                DataTable dt = datos.ObtenerAñosPOM(Convert.ToDecimal(lblPOM.Content)).Tables[0];
+                decimal FechaInicio = 0;
+                decimal FechaFin = 0;
+                string sNombre = "";
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    sNombre = row["Nombre"].ToString();
+                    FechaInicio = Convert.ToDecimal(row["Fecha_Inicio"]);
+                    FechaFin = Convert.ToDecimal(row["Fecha_Fin"]);
+                }
+
+
+
+            }
+            else
+            {
+            }
+        }
     }
 }
