@@ -274,6 +274,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons\catalog.png" />
+    <Resource Include="Icons\edit.png" />
+    <Resource Include="Icons\Delete.png" />
     <Resource Include="Icons\iconRequerido.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
