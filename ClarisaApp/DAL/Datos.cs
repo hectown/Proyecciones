@@ -11,7 +11,7 @@ using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.GridView;
 using ClarisaApp.Views;
 using ADOX;
-
+using System.Collections;
 
 namespace ClarisaApp.DAL
 {
@@ -442,21 +442,30 @@ namespace ClarisaApp.DAL
                     string q = "INSERT INTO CatContratos (CONTRATO,RESERVA,Descripción_Contrato,FecIncContrato,FecVencContrato,POLITICAPAGO,COMPAÑÍA,PROVEEDOR,CONCATENAR) VALUES (@CONTRATO,@RESERVA,@Descripción_Contrato,@FecIncCont,@FecVencContrato,@POLITICAPAGO,@COMPAÑÍA,@PROVEEDOR,@CONCATENAR)";
                     OleDbCommand comando = new OleDbCommand(q, con);
 
-                    foreach (var item in grid.Items)
+                    ///Sergio Lira 18/08/2017
+                    ///Modificado para que guarde todos las filas del grid y no solo por paginado
+                    var itemsSource = grid.ItemsSource as IEnumerable;
+                    
+                    foreach (var item in itemsSource)
                     {
-
-                        var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
+                        
                         comando.Parameters.Clear();
                         
-                        comando.Parameters.AddWithValue("@CONTRATO", Convert.ToString(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@RESERVA", Convert.ToString(((GridViewCell)(row.Cells[1])).Value));
-                        comando.Parameters.AddWithValue("@Descripción_Contrato", Convert.ToString(((GridViewCell)(row.Cells[2])).Value));
-                        comando.Parameters.AddWithValue("@FecIncCont", Convert.ToString(((GridViewCell)(row.Cells[3])).Value));
-                        comando.Parameters.AddWithValue("@FecVencContrato", Convert.ToString(((GridViewCell)(row.Cells[4])).Value));
-                        comando.Parameters.AddWithValue("@POLITICAPAGO", Convert.ToDecimal(((GridViewCell)(row.Cells[5])).Value));
-                        comando.Parameters.AddWithValue("@COMPAÑÍA", Convert.ToString(((GridViewCell)(row.Cells[6])).Value));
-                        comando.Parameters.AddWithValue("@PROVEEDOR", Convert.ToDecimal(((GridViewCell)(row.Cells[7])).Value));
-                        comando.Parameters.AddWithValue("@CONCATENAR", Convert.ToString(((GridViewCell)(row.Cells[8])).Value));
+                        DataRowView row = (DataRowView)item;
+                      
+                        //Agregado porque causa conflicto si el campo esta vacion porque es numerico en la base de datos
+                        var pol = row[5].ToString() == "" ? "0" : row[5].ToString();
+                        var pro = row[7].ToString() == "" ? "0" : row[7].ToString();
+
+                        comando.Parameters.AddWithValue("@CONTRATO", row[0].ToString());
+                        comando.Parameters.AddWithValue("@RESERVA",  row[1].ToString());
+                        comando.Parameters.AddWithValue("@Descripción_Contrato", row[2].ToString());
+                        comando.Parameters.AddWithValue("@FecIncCont", row[3].ToString());
+                        comando.Parameters.AddWithValue("@FecVencContrato", row[4].ToString());
+                        comando.Parameters.AddWithValue("@POLITICAPAGO", pol);
+                        comando.Parameters.AddWithValue("@COMPAÑÍA", row[6].ToString());
+                        comando.Parameters.AddWithValue("@PROVEEDOR", pro);
+                        comando.Parameters.AddWithValue("@CONCATENAR", row[8].ToString());
 
                         comando.ExecuteNonQuery();
                     }
