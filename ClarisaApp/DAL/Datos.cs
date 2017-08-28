@@ -348,36 +348,42 @@ namespace ClarisaApp.DAL
                     string q = "INSERT INTO CatActividades (PRO_PRE,POZO,ACTIVIDAD,ACTIVIDAD_ESPECIFICA,No_EQUIPO,NOMBRE_DE_EQUIPO,ESTRUC,RENTA,OBJETIVO,INTERVALO,PROF,Fec_Inic,Fec_Term,Días,NOTAS,Campo16,LLAVE,LLAVE1,LLAVE2,LLAVE3,Campo21,ELEM_PEP,LLAVE_DE_CRUCE) VALUES (@pre,@pozo,@ACTIVIDAD,@ACTIVIDAD_ESPECIFICA,@No_EQUIPO,@NOMBRE_DE_EQUIPO,@ESTRUC,@RENTA,@OBJETIVO,@INTERVALO,@PROF,@Fec_Inic,@Fec_Term,@Días,@NOTAS,@Campo16,@LLAVE,@LLAVE1,@LLAVE2,@LLAVE3,@Campo21,@ELEM_PEP,@LLAVE_DE_CRUCE)";
                     OleDbCommand comando = new OleDbCommand(q, con);
 
-                    foreach (var item in grid.Items)
+                    var itemsSource = grid.ItemsSource as IEnumerable;
+
+                    foreach (var item in itemsSource)
                     {
 
-                        var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
+                        //var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
                         comando.Parameters.Clear();
 
+                        DataRowView row = (DataRowView)item;
+                        DateTime fecha_i = Convert.ToDateTime(row[11].ToString());
+                        DateTime fecha_f = Convert.ToDateTime(row[12].ToString());
+
                         //comando.Parameters.AddWithValue("@ID", Convert.ToDecimal(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@pre", Convert.ToString(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@pozo", Convert.ToString(((GridViewCell)(row.Cells[1])).Value));
-                        comando.Parameters.AddWithValue("@ACTIVIDAD", Convert.ToString(((GridViewCell)(row.Cells[2])).Value));
-                        comando.Parameters.AddWithValue("@ACTIVIDAD_ESPECIFICA", Convert.ToString(((GridViewCell)(row.Cells[3])).Value));
-                        comando.Parameters.AddWithValue("@No_EQUIPO", Convert.ToString(((GridViewCell)(row.Cells[4])).Value));
-                        comando.Parameters.AddWithValue("@NOMBRE_DE_EQUIPO", Convert.ToString(((GridViewCell)(row.Cells[5])).Value));
-                        comando.Parameters.AddWithValue("@ESTRUC", Convert.ToString(((GridViewCell)(row.Cells[6])).Value));
-                        comando.Parameters.AddWithValue("@RENTA", Convert.ToString(((GridViewCell)(row.Cells[7])).Value));
-                        comando.Parameters.AddWithValue("@OBJETIVO", Convert.ToString(((GridViewCell)(row.Cells[8])).Value));
-                        comando.Parameters.AddWithValue("@INTERVALO", Convert.ToString(((GridViewCell)(row.Cells[9])).Value));
-                        comando.Parameters.AddWithValue("@PROF", Convert.ToString(((GridViewCell)(row.Cells[10])).Value));
-                        comando.Parameters.AddWithValue("@Fec_Inic", Convert.ToDateTime(((GridViewCell)(row.Cells[11])).Value));
-                        comando.Parameters.AddWithValue("@Fec_Term", Convert.ToDateTime(((GridViewCell)(row.Cells[12])).Value));
-                        comando.Parameters.AddWithValue("@Días", Convert.ToString(((GridViewCell)(row.Cells[13])).Value));
-                        comando.Parameters.AddWithValue("@Campo16", Convert.ToString(((GridViewCell)(row.Cells[14])).Value));
-                        comando.Parameters.AddWithValue("@NOTAS", Convert.ToString(((GridViewCell)(row.Cells[15])).Value));
-                        comando.Parameters.AddWithValue("@LLAVE", Convert.ToString(((GridViewCell)(row.Cells[16])).Value));
-                        comando.Parameters.AddWithValue("@LLAVE1", Convert.ToString(((GridViewCell)(row.Cells[17])).Value));
-                        comando.Parameters.AddWithValue("@LLAVE2", Convert.ToString(((GridViewCell)(row.Cells[18])).Value));
-                        comando.Parameters.AddWithValue("@LLAVE3", Convert.ToString(((GridViewCell)(row.Cells[19])).Value));
-                        comando.Parameters.AddWithValue("@Campo21", Convert.ToString(((GridViewCell)(row.Cells[20])).Value));
-                        comando.Parameters.AddWithValue("@ELEM_PEP", Convert.ToString(((GridViewCell)(row.Cells[21])).Value));
-                        comando.Parameters.AddWithValue("@LLAVE_DE_CRUCE", Convert.ToString(((GridViewCell)(row.Cells[22])).Value));
+                        comando.Parameters.AddWithValue("@pre", row[0].ToString());
+                        comando.Parameters.AddWithValue("@pozo", row[1].ToString());
+                        comando.Parameters.AddWithValue("@ACTIVIDAD", row[2].ToString());
+                        comando.Parameters.AddWithValue("@ACTIVIDAD_ESPECIFICA", row[3].ToString());
+                        comando.Parameters.AddWithValue("@No_EQUIPO", row[4].ToString());
+                        comando.Parameters.AddWithValue("@NOMBRE_DE_EQUIPO", row[5].ToString());
+                        comando.Parameters.AddWithValue("@ESTRUC", row[6].ToString());
+                        comando.Parameters.AddWithValue("@RENTA", row[7].ToString());
+                        comando.Parameters.AddWithValue("@OBJETIVO", row[8].ToString());
+                        comando.Parameters.AddWithValue("@INTERVALO", row[9].ToString());
+                        comando.Parameters.AddWithValue("@PROF", row[10].ToString());
+                        comando.Parameters.AddWithValue("@Fec_Inic", fecha_i);
+                        comando.Parameters.AddWithValue("@Fec_Term", fecha_f);
+                        comando.Parameters.AddWithValue("@Días", row[13].ToString());
+                        comando.Parameters.AddWithValue("@Campo16", row[14].ToString());
+                        comando.Parameters.AddWithValue("@NOTAS", row[15].ToString());
+                        comando.Parameters.AddWithValue("@LLAVE", row[16].ToString());
+                        comando.Parameters.AddWithValue("@LLAVE1", row[17].ToString());
+                        comando.Parameters.AddWithValue("@LLAVE2", row[18].ToString());
+                        comando.Parameters.AddWithValue("@LLAVE3", row[19].ToString());
+                        comando.Parameters.AddWithValue("@Campo21", row[20].ToString());
+                        comando.Parameters.AddWithValue("@ELEM_PEP", row[21].ToString());
+                        comando.Parameters.AddWithValue("@LLAVE_DE_CRUCE", row[22].ToString());
 
                         comando.ExecuteNonQuery();
                     }
@@ -387,23 +393,30 @@ namespace ClarisaApp.DAL
                     string q = "INSERT INTO CatAdmon (Llave,Cve_Campo,ID_Asignacion,Des_Asignacion,Cve_Asignacion,Des_Campo,Cve_Proyecto,Des_Proyecto,Campo_Cab_Asig,Activo,Proy_Prog) VALUES (@Llave,@Cve_Campo,@ID_Asignacion,@Des_Asignacion,@Cve_Asignacion,@Des_Campo,@Cve_Proyecto,@Des_Proyecto,@Campo_Cab_Asig,@Activo,@Proy_Prog)";
                     OleDbCommand comando = new OleDbCommand(q, con);
 
-                    foreach (var item in grid.Items)
+                    var itemsSource = grid.ItemsSource as IEnumerable;
+
+                    foreach (var item in itemsSource)
                     {
 
-                        var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
+
+                        //var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
                         comando.Parameters.Clear();
-                       // comando.Parameters.AddWithValue("@Id", Convert.ToDecimal(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@Llave", Convert.ToString(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@Cve_Campo", Convert.ToString(((GridViewCell)(row.Cells[1])).Value));
-                        comando.Parameters.AddWithValue("@ID_Asignacion", Convert.ToString(((GridViewCell)(row.Cells[2])).Value));
-                        comando.Parameters.AddWithValue("@Des_Asignacion", Convert.ToString(((GridViewCell)(row.Cells[3])).Value));
-                        comando.Parameters.AddWithValue("@Cve_Asignacion", Convert.ToString(((GridViewCell)(row.Cells[4])).Value));
-                        comando.Parameters.AddWithValue("@Des_Campo", Convert.ToString(((GridViewCell)(row.Cells[5])).Value));
-                        comando.Parameters.AddWithValue("@Cve_Proyecto", Convert.ToString(((GridViewCell)(row.Cells[6])).Value));
-                        comando.Parameters.AddWithValue("@Des_Proyecto", Convert.ToString(((GridViewCell)(row.Cells[7])).Value));
-                        comando.Parameters.AddWithValue("@Campo_Cab_Asig", Convert.ToString(((GridViewCell)(row.Cells[8])).Value));
-                        comando.Parameters.AddWithValue("@Activo", Convert.ToString(((GridViewCell)(row.Cells[9])).Value));
-                        comando.Parameters.AddWithValue("@Proy_Prog", Convert.ToString(((GridViewCell)(row.Cells[10])).Value));
+
+                        DataRowView row = (DataRowView)item;
+                        
+
+                        // comando.Parameters.AddWithValue("@Id", Convert.ToDecimal(((GridViewCell)(row.Cells[0])).Value));
+                        comando.Parameters.AddWithValue("@Llave", row[0].ToString());
+                        comando.Parameters.AddWithValue("@Cve_Campo", row[1].ToString());
+                        comando.Parameters.AddWithValue("@ID_Asignacion", row[2].ToString());
+                        comando.Parameters.AddWithValue("@Des_Asignacion", row[3].ToString());
+                        comando.Parameters.AddWithValue("@Cve_Asignacion", row[4].ToString());
+                        comando.Parameters.AddWithValue("@Des_Campo", row[5].ToString());
+                        comando.Parameters.AddWithValue("@Cve_Proyecto", row[6].ToString());
+                        comando.Parameters.AddWithValue("@Des_Proyecto", row[7].ToString());
+                        comando.Parameters.AddWithValue("@Campo_Cab_Asig", row[8].ToString());
+                        comando.Parameters.AddWithValue("@Activo", row[9].ToString());
+                        comando.Parameters.AddWithValue("@Proy_Prog", row[10].ToString());
 
                         comando.ExecuteNonQuery();
                     }
@@ -413,26 +426,34 @@ namespace ClarisaApp.DAL
                     string q = "INSERT INTO CatAsigCampoPYIN (Campo_Cab_Asig,Subdirección,ID_Asignacion,Cve_Asignacion,Des_Asignacion,Cve_Campo,Des_Campo,Cve_Proyecto,Des_Proyecto,Campo10,Activo,Estatus,F_inicio,F_fin) VALUES (@Campo_Cab_Asig,@Subdirección,@ID_Asignacion,@Cve_Asignacion,@Des_Asignacion,@Cve_Campo,@Des_Campo,@Cve_Proyecto,@Des_Proyecto,@Campo10,@Activo,@Estatus,@F_inicio,@F_fin)";
                     OleDbCommand comando = new OleDbCommand(q, con);
 
-                    foreach (var item in grid.Items)
+                    var itemsSource = grid.ItemsSource as IEnumerable;
+
+                    foreach (var item in itemsSource)
                     {
 
-                        var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
+                        //var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
                         comando.Parameters.Clear();
-                        comando.Parameters.AddWithValue("@Campo_Cab_Asig", Convert.ToString(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@Subdirección", Convert.ToString(((GridViewCell)(row.Cells[1])).Value));
-                        comando.Parameters.AddWithValue("@ID_Asignacion", Convert.ToString(((GridViewCell)(row.Cells[2])).Value));
-                        comando.Parameters.AddWithValue("@Cve_Asignacion", Convert.ToString(((GridViewCell)(row.Cells[3])).Value));
-                        comando.Parameters.AddWithValue("@Des_Asignacion", Convert.ToString(((GridViewCell)(row.Cells[4])).Value));
-                        comando.Parameters.AddWithValue("@Subdirección", Convert.ToString(((GridViewCell)(row.Cells[5])).Value));
-                        comando.Parameters.AddWithValue("@Cve_Campo", Convert.ToString(((GridViewCell)(row.Cells[6])).Value));
-                        comando.Parameters.AddWithValue("@Des_Campo", Convert.ToString(((GridViewCell)(row.Cells[7])).Value));
-                        comando.Parameters.AddWithValue("@Cve_Proyecto", Convert.ToString(((GridViewCell)(row.Cells[8])).Value));
-                        comando.Parameters.AddWithValue("@Des_Proyecto", Convert.ToString(((GridViewCell)(row.Cells[9])).Value));
-                        comando.Parameters.AddWithValue("@Campo10", Convert.ToString(((GridViewCell)(row.Cells[10])).Value));
-                        comando.Parameters.AddWithValue("@Activo", Convert.ToString(((GridViewCell)(row.Cells[11])).Value));
-                        comando.Parameters.AddWithValue("@Estatus", Convert.ToString(((GridViewCell)(row.Cells[12])).Value));
-                        comando.Parameters.AddWithValue("@F_inicio", Convert.ToDateTime(((GridViewCell)(row.Cells[13])).Value));
-                        comando.Parameters.AddWithValue("@F_fin", Convert.ToDateTime(((GridViewCell)(row.Cells[04])).Value));
+                        DataRowView row = (DataRowView)item;
+
+                        DateTime fecha_i = Convert.ToDateTime(row[12].ToString());
+                        DateTime fecha_f = Convert.ToDateTime(row[13].ToString());
+
+
+                        comando.Parameters.AddWithValue("@Campo_Cab_Asig", row[0].ToString());
+                        comando.Parameters.AddWithValue("@Subdirección", row[1].ToString());
+                        comando.Parameters.AddWithValue("@ID_Asignacion", row[2].ToString());
+                        comando.Parameters.AddWithValue("@Cve_Asignacion", row[3].ToString());
+                        comando.Parameters.AddWithValue("@Des_Asignacion", row[4].ToString());
+                        //comando.Parameters.AddWithValue("@Subdirección", row[5].ToString());
+                        comando.Parameters.AddWithValue("@Cve_Campo", row[5].ToString());
+                        comando.Parameters.AddWithValue("@Des_Campo", row[6].ToString());
+                        comando.Parameters.AddWithValue("@Cve_Proyecto", row[7].ToString());
+                        comando.Parameters.AddWithValue("@Des_Proyecto", row[8].ToString());
+                        comando.Parameters.AddWithValue("@Campo10", row[9].ToString());
+                        comando.Parameters.AddWithValue("@Activo", row[10].ToString());
+                        comando.Parameters.AddWithValue("@Estatus", row[11].ToString());
+                        comando.Parameters.AddWithValue("@F_inicio", fecha_i);
+                        comando.Parameters.AddWithValue("@F_fin", fecha_f);
 
                         comando.ExecuteNonQuery();
                     }
@@ -475,34 +496,46 @@ namespace ClarisaApp.DAL
                     string q = "INSERT INTO CatIdPozo (Id,Pozo,IIP) VALUES (@Id,@Pozo,@IIP)";
                     OleDbCommand comando = new OleDbCommand(q, con);
 
-                    foreach (var item in grid.Items)
+                    var itemsSource = grid.ItemsSource as IEnumerable;
+
+                    foreach (var item in itemsSource)
                     {
 
-                        var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
+                        //var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
                         comando.Parameters.Clear();
-                        comando.Parameters.AddWithValue("@Id", Convert.ToDecimal(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@Pozo", Convert.ToString(((GridViewCell)(row.Cells[1])).Value));
-                        comando.Parameters.AddWithValue("@IIP", Convert.ToString(((GridViewCell)(row.Cells[2])).Value));
+                        DataRowView row = (DataRowView)item;
+
+                        Decimal id = row[0].ToString() == "" ? 0 : Convert.ToDecimal(row[0].ToString());
+
+                        comando.Parameters.AddWithValue("@Id", id);
+                        comando.Parameters.AddWithValue("@Pozo", row[1].ToString());
+                        comando.Parameters.AddWithValue("@IIP", row[2].ToString());
 
                         comando.ExecuteNonQuery();
                     }
                 }
                 else if (catalogo == "LlaveControl")
                 {
-                    string q = "INSERT INTO CatLlaveControl (Id1,pro-tt,PP,id_presentacion,ID,ID2) VALUES (@Id1,@pro-tt,@PP,@id_presentacion,@ID,@ID2)";
+                    string q = "INSERT INTO CatLlaveControl (Id1,prott,PP,id_presentacion,ID,ID2) VALUES (@Id1,@prott,@PP,@id_presentacion,@ID,@ID2)";
                     OleDbCommand comando = new OleDbCommand(q, con);
 
-                    foreach (var item in grid.Items)
+                    var itemsSource = grid.ItemsSource as IEnumerable;
+
+                    foreach (var item in itemsSource)
                     {
 
-                        var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
+                        //var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
                         comando.Parameters.Clear();
-                        comando.Parameters.AddWithValue("@Id1", Convert.ToDecimal(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@pro-tt", Convert.ToString(((GridViewCell)(row.Cells[1])).Value));
-                        comando.Parameters.AddWithValue("@PP", Convert.ToString(((GridViewCell)(row.Cells[2])).Value));
-                        comando.Parameters.AddWithValue("@id_presentacion", Convert.ToString(((GridViewCell)(row.Cells[3])).Value));
-                        comando.Parameters.AddWithValue("@ID", Convert.ToString(((GridViewCell)(row.Cells[4])).Value));
-                        comando.Parameters.AddWithValue("@ID2", Convert.ToString(((GridViewCell)(row.Cells[5])).Value));
+                        DataRowView row = (DataRowView)item;
+
+                        Decimal id1 = row[0].ToString() == "" ? 0 : Convert.ToDecimal(row[0].ToString());
+
+                        comando.Parameters.AddWithValue("@Id1", id1);
+                        comando.Parameters.AddWithValue("@prott", row[1].ToString());
+                        comando.Parameters.AddWithValue("@PP", row[2].ToString());
+                        comando.Parameters.AddWithValue("@id_presentacion", row[3].ToString());
+                        comando.Parameters.AddWithValue("@ID", row[4].ToString());
+                        comando.Parameters.AddWithValue("@ID2", row[5].ToString());
                         
                         comando.ExecuteNonQuery();
                     }
@@ -512,18 +545,22 @@ namespace ClarisaApp.DAL
                     string q = "INSERT INTO CatPPEquivalentes (Programa_anterior,Elemento_PEP_Anterior,Descripción_PP_Anterior,Programa_Vigente,Elemento_PEP,Descripción_PP) VALUES (@Programa_anterior,@Elemento_PEP_Anterior,@Descripción_PP_Anterior,@Programa_Vigente,@Elemento_PEP,@Descripción_PP)";
                     OleDbCommand comando = new OleDbCommand(q, con);
 
-                    foreach (var item in grid.Items)
+                    var itemsSource = grid.ItemsSource as IEnumerable;
+
+                    foreach (var item in itemsSource)
                     {
 
-                        var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
+                        //var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
                         comando.Parameters.Clear();
+                        DataRowView row = (DataRowView)item;
+
                         //comando.Parameters.AddWithValue("@Id", Convert.ToDecimal(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@Programa_anterior", Convert.ToString(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@Elemento_PEP_Anterior", Convert.ToString(((GridViewCell)(row.Cells[1])).Value));
-                        comando.Parameters.AddWithValue("@Descripción_PP_Anterior", Convert.ToString(((GridViewCell)(row.Cells[2])).Value));
-                        comando.Parameters.AddWithValue("@Programa_Vigente", Convert.ToString(((GridViewCell)(row.Cells[3])).Value));
-                        comando.Parameters.AddWithValue("@Elemento_PEP", Convert.ToString(((GridViewCell)(row.Cells[4])).Value));
-                        comando.Parameters.AddWithValue("@Descripción_PP", Convert.ToString(((GridViewCell)(row.Cells[5])).Value));
+                        comando.Parameters.AddWithValue("@Programa_anterior", row[0].ToString());
+                        comando.Parameters.AddWithValue("@Elemento_PEP_Anterior", row[1].ToString());
+                        comando.Parameters.AddWithValue("@Descripción_PP_Anterior", row[2].ToString());
+                        comando.Parameters.AddWithValue("@Programa_Vigente", row[3].ToString());
+                        comando.Parameters.AddWithValue("@Elemento_PEP", row[4].ToString());
+                        comando.Parameters.AddWithValue("@Descripción_PP", row[5].ToString());
                         comando.ExecuteNonQuery();
                     }
                 }
@@ -532,47 +569,68 @@ namespace ClarisaApp.DAL
                     string q = "INSERT INTO CatProyectos (PROYECTO,PYIN) VALUES (@PROYECTO,@PYIN)";
                     OleDbCommand comando = new OleDbCommand(q, con);
 
-                    foreach (var item in grid.Items)
+                    var itemsSource = grid.ItemsSource as IEnumerable;
+
+                    foreach (var item in itemsSource)
                     {
 
-                        var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
+                        //var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
                         comando.Parameters.Clear();
-                       
-                        comando.Parameters.AddWithValue("@PROYECTO", Convert.ToString(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@PYIN", Convert.ToString(((GridViewCell)(row.Cells[1])).Value));
+                        DataRowView row = (DataRowView)item;
+
+                        comando.Parameters.AddWithValue("@PROYECTO", row[0].ToString());
+                        comando.Parameters.AddWithValue("@PYIN", row[1].ToString());
                         comando.ExecuteNonQuery();
                     }
                 }
                 else if (catalogo == "POZOADMON")
                 {
-                    string q = "INSERT INTO CatPOZOADMON (PROGRAMA,ELEMENTO_PEP,PRO_POZO,CONCATENAR,POZO,Soc_CO,Entidad_CP,Proy_Aval,PROY,EPEP:_Descripción,EPEP:_Ind,EPEP:_Cent,Prog/Inic,Prog/Term,Fecha,Prog,To,Campo,PTO) VALUES (@PROGRAMA,@ELEMENTO_PEP,@PRO_POZO,@CONCATENAR,@POZO,@Soc_CO,@Entidad_CP,@Proy_Aval,@PROY,@EPEP:_Descripción,@EPEP:_Ind,@EPEP:_Cent,@Prog/Inic,@Prog/Term,@Fecha,@Prog,@To,@Campo,@PTO)";
+                    //string q = " INSERT INTO CatPOZOADMON (PROGRAMA,ELEMENTO_PEP, PRO_POZO, CONCATENAR,POZO,Soc_CO,Entidad_CP,Proy_Aval,PROY,EPEP_Descripcion,EPEP_Ind,EPEP_Cent, Prog_Inic,Prog_Term,Fecha,Prog,To,Campo,PTO) VALUES ( '41AA0100KG4Z1601', 'E41AA01Z16KG401', '41AKG4T. APOYO', '41AKG4', 'T. APOYO', 'PEP', 'PEP', 'PROD', '41A', 'B08 GTOS OPERAC EQS FUERA DE OPERN BALAM', '0', '2531', '01/10/2016', '31/12/2025', '', 'KG', '4', 'Z16', 'KG4')";
+
+                    string q = " INSERT INTO CatPOZOADMON (PROGRAMA, ELEMENTO_PEP, PRO_POZO, CONCATENAR, POZO, Soc_CO, Entidad_CP, Proy_Aval, PROY, EPEP_Descripcion, EPEP_Ind, EPEP_Cent, Prog_Inic, Prog_Term, Fecha, Prog, Tox, Campo,PTO) VALUES(@PROGRAMA, @ELEMENTO_PEP, @PRO_POZO, @CONCATENAR, @POZO, @Soc_CO, @Entidad_CP, @Proy_Aval, @PROY, @EPEP_Descripcion, @EPEP_Ind, @EPEP_Cent, @Prog_Inic, @Prog_Term, @Fecha, @Prog, @Tox, @Campo, @PTO)";
+
                     OleDbCommand comando = new OleDbCommand(q, con);
 
-                    foreach (var item in grid.Items)
+                    //VALUES( '41AA0100KG4Z1601', 'E41AA01Z16KG401', '41AKG4T. APOYO', '41AKG4', 'T. APOYO', 'PEP', 'PEP', 'PROD', '41A', 'B08 GTOS OPERAC EQS FUERA DE OPERN BALAM',  '', 25310000, '01/10/2016', '31/12/2025', '', 'KG', '4', 'Z16', 'KG4'    )
+
+                    /*VALUES(@PROGRAMA, @ELEMENTO_PEP, @PRO_POZO, @CONCATENAR, @POZO, @Soc_CO, @Entidad_CP, @Proy_Aval, @PROY, @EPEP_Descripcion,
+                                @EPEP_Ind, @EPEP_Cent, @Prog_Inic, @Prog_Term, @Fecha, @Prog, @To, @Campo, @PTO)*/
+
+
+                    var itemsSource = grid.ItemsSource as IEnumerable;
+
+                    foreach (var item in itemsSource)
                     {
 
-                        var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
+                        //var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
                         comando.Parameters.Clear();
+                        DataRowView row = (DataRowView)item;
 
-                        comando.Parameters.AddWithValue("@PROGRAMA", Convert.ToString(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@ELEMENTO_PEP", Convert.ToString(((GridViewCell)(row.Cells[1])).Value));
-                        comando.Parameters.AddWithValue("@CONCATENAR", Convert.ToString(((GridViewCell)(row.Cells[2])).Value));
-                        comando.Parameters.AddWithValue("@POZO", Convert.ToString(((GridViewCell)(row.Cells[3])).Value));
-                        comando.Parameters.AddWithValue("@Soc_CO", Convert.ToString(((GridViewCell)(row.Cells[4])).Value));
-                        comando.Parameters.AddWithValue("@Entidad_CP", Convert.ToString(((GridViewCell)(row.Cells[5])).Value));
-                        comando.Parameters.AddWithValue("@Proy_Aval", Convert.ToString(((GridViewCell)(row.Cells[6])).Value));
-                        comando.Parameters.AddWithValue("@PROY", Convert.ToString(((GridViewCell)(row.Cells[7])).Value));
-                        comando.Parameters.AddWithValue("@EPEP:_Descripción", Convert.ToString(((GridViewCell)(row.Cells[8])).Value));
-                        comando.Parameters.AddWithValue("@EPEP:_Ind", Convert.ToString(((GridViewCell)(row.Cells[9])).Value));
-                        comando.Parameters.AddWithValue("@EPEP:_Cent", Convert.ToDecimal(((GridViewCell)(row.Cells[10])).Value));
-                        comando.Parameters.AddWithValue("@Prog/Inic", Convert.ToDateTime(((GridViewCell)(row.Cells[11])).Value));
-                        comando.Parameters.AddWithValue("@Prog/Term", Convert.ToDateTime(((GridViewCell)(row.Cells[12])).Value));
-                        comando.Parameters.AddWithValue("@Fecha", Convert.ToString(((GridViewCell)(row.Cells[13])).Value));
-                        comando.Parameters.AddWithValue("@Prog", Convert.ToString(((GridViewCell)(row.Cells[14])).Value));
-                        comando.Parameters.AddWithValue("@To", Convert.ToString(((GridViewCell)(row.Cells[15])).Value));
-                        comando.Parameters.AddWithValue("@Campo", Convert.ToString(((GridViewCell)(row.Cells[16])).Value));
-                        comando.Parameters.AddWithValue("@PTO", Convert.ToString(((GridViewCell)(row.Cells[17])).Value));
-                        
+                        Decimal cent = row[11].ToString() == "" ? 0 : Convert.ToDecimal(row[11].ToString());
+                        DateTime fi = Convert.ToDateTime(row[12].ToString()); // Convert.ToDateTime(row[11].ToString());
+                        DateTime ff = Convert.ToDateTime(row[13].ToString()); // Convert.ToDateTime(row[12].ToString());
+
+
+                        comando.Parameters.AddWithValue("@PROGRAMA", row[0].ToString());
+                        comando.Parameters.AddWithValue("@ELEMENTO_PEP", row[1].ToString());
+                        comando.Parameters.AddWithValue("@PRO_POZO", row[2].ToString());
+                        comando.Parameters.AddWithValue("@CONCATENAR", row[3].ToString());
+                        comando.Parameters.AddWithValue("@POZO", row[4].ToString());
+                        comando.Parameters.AddWithValue("@Soc_CO", row[5].ToString());
+                        comando.Parameters.AddWithValue("@Entidad_CP", row[6].ToString());
+                        comando.Parameters.AddWithValue("@Proy_Aval", row[7].ToString());
+                        comando.Parameters.AddWithValue("@PROY", row[8].ToString());
+                        comando.Parameters.AddWithValue("@EPEP_Descripcion", row[9].ToString());
+                        comando.Parameters.AddWithValue("@EPEP_Ind", row[10].ToString());
+                        comando.Parameters.AddWithValue("@EPEP_Cent", cent);
+                        comando.Parameters.AddWithValue("@Prog_Inic", fi);
+                        comando.Parameters.AddWithValue("@Prog_Term", ff);
+                        comando.Parameters.AddWithValue("@Fecha", row[14].ToString());
+                        comando.Parameters.AddWithValue("@Prog", row[15].ToString());
+                        comando.Parameters.AddWithValue("@Tox", row[16].ToString());
+                        comando.Parameters.AddWithValue("@Campo", row[17].ToString());
+                        comando.Parameters.AddWithValue("@PTO", row[18].ToString());
+
                         comando.ExecuteNonQuery();
                     }
                 }
@@ -581,14 +639,17 @@ namespace ClarisaApp.DAL
                     string q = "INSERT INTO CatSupervisores (USUARIO,FICHA) VALUES (@USUARIO,@FICHA)";
                     OleDbCommand comando = new OleDbCommand(q, con);
 
-                    foreach (var item in grid.Items)
+                    var itemsSource = grid.ItemsSource as IEnumerable;
+
+                    foreach (var item in itemsSource)
                     {
 
-                        var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
+                        //var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
                         comando.Parameters.Clear();
-                       
-                        comando.Parameters.AddWithValue("@USUARIO", Convert.ToString(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@FICHA", Convert.ToString(((GridViewCell)(row.Cells[1])).Value));
+                        DataRowView row = (DataRowView)item;
+
+                        comando.Parameters.AddWithValue("@USUARIO", row[0].ToString());
+                        comando.Parameters.AddWithValue("@FICHA", row[1].ToString());
                         comando.ExecuteNonQuery();
                     }
                 }

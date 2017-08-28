@@ -197,7 +197,7 @@ namespace ClarisaApp.Views
         }
 
 
-        public void importa()
+        public void importa2()
         {
 
 
@@ -284,6 +284,103 @@ namespace ClarisaApp.Views
 
 
         }
+
+        public void importa()
+        {
+            
+            try
+            {
+                OpenFileDialog openfile = new OpenFileDialog();
+                openfile.DefaultExt = ".xlsx";
+                openfile.Filter = "(.xlsx)|*.xlsx";
+                //openfile.ShowDialog();
+
+                var browsefile = openfile.ShowDialog();
+
+                if (browsefile == true)
+                {
+                    txtFilePath.Text = openfile.FileName;
+
+                    Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    //Static File From Base Path...........
+                    //Microsoft.Office.Interop.Excel.Workbook excelBook = excelApp.Workbooks.Open(AppDomain.CurrentDomain.BaseDirectory + "TestExcel.xlsx", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                    //Dynamic File Using Uploader...........
+                    Microsoft.Office.Interop.Excel.Workbook excelBook = excelApp.Workbooks.Open(txtFilePath.Text.ToString(), 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                    Microsoft.Office.Interop.Excel.Worksheet excelSheet = (Microsoft.Office.Interop.Excel.Worksheet)excelBook.Worksheets.get_Item(1); ;
+                    Microsoft.Office.Interop.Excel.Range excelRange = excelSheet.UsedRange;
+
+                    //string strCellData = "";
+                    //double douCellData;
+                    int rowCnt = 0;
+                    int colCnt = 0;
+
+                    DataTable dt = new DataTable();
+                    for (colCnt = 1; colCnt <= excelRange.Columns.Count; colCnt++)
+                    {
+                        string strColumn = "";
+                        strColumn = (string)(excelRange.Cells[1, colCnt] as Microsoft.Office.Interop.Excel.Range).Value2;
+                        dt.Columns.Add(strColumn, typeof(string));
+                    }
+
+                    int columns_count = excelRange.Columns.Count;
+                    int rows_count = excelRange.Rows.Count;
+
+                    for (rowCnt = 2; rowCnt <= rows_count; rowCnt++)
+                    {
+                        object[] strData = new object[columns_count];
+
+                        for (int clm = 0; clm < columns_count; clm++)
+                        {
+                            strData[clm] = ((Microsoft.Office.Interop.Excel.Range)excelSheet.Cells[rowCnt, clm + 1]).Value2;
+                        }
+
+
+                        dt.Rows.Add(strData);
+                        //dt.Rows.Add(
+                        //                ((Microsoft.Office.Interop.Excel.Range)excelSheet.Cells[rowCnt, 1]).Value2,
+                        //                ((Microsoft.Office.Interop.Excel.Range)excelSheet.Cells[rowCnt, 2]).Value2,
+                        //                ((Microsoft.Office.Interop.Excel.Range)excelSheet.Cells[rowCnt, 3]).Value2,
+                        //                ((Microsoft.Office.Interop.Excel.Range)excelSheet.Cells[rowCnt, 4]).Value2,
+                        //                ((Microsoft.Office.Interop.Excel.Range)excelSheet.Cells[rowCnt, 5]).Value2,
+                        //                ((Microsoft.Office.Interop.Excel.Range)excelSheet.Cells[rowCnt, 6]).Value2,
+                        //                ((Microsoft.Office.Interop.Excel.Range)excelSheet.Cells[rowCnt, 7]).Value2,
+                        //                ((Microsoft.Office.Interop.Excel.Range)excelSheet.Cells[rowCnt, 8]).Value2,
+                        //                ((Microsoft.Office.Interop.Excel.Range)excelSheet.Cells[rowCnt, 9]).Value2
+
+                        //);
+
+                    }
+
+                    gvData.ItemsSource = dt.DefaultView;
+
+                    excelBook.Close(true, null, null);
+                    excelApp.Quit();
+
+                    var alert = new RadDesktopAlert();
+                    alert.Header = "NOTIFICACIÓN";
+                    alert.Content = "El archivo se cargó exitosamente.";
+                    alert.ShowDuration = 3000;
+                    RadDesktopAlertManager manager = new RadDesktopAlertManager();
+                    manager.ShowAlert(alert);
+                }
+                else
+                {
+                    btGuardar.Visibility = Visibility.Hidden;
+                    btCancelar.Visibility = Visibility.Hidden;
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+
+            }
+
+
+        }
+
 
         private void RadButtonGuardar_Click(object sender, RoutedEventArgs e)
         {
