@@ -2829,6 +2829,279 @@ group by Id, EjecutoresCalendarizados.pozo )  AS [%$##@_Alias];
 
         }
 
+
+
+
+
         #endregion
+
+        #region Insert New Row
+        public void GuardarCatNewRow(DataRowView row, string catalogo)
+        {
+            try
+            {
+
+                OleDbConnection con = new OleDbConnection();
+                con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "\\BaseDeDatos.accdb";
+
+                con.Open();
+
+                if (catalogo == "Actividades")
+                {
+                    string q = "INSERT INTO CatActividades (PRO_PRE,POZO,ACTIVIDAD,ACTIVIDAD_ESPECIFICA,No_EQUIPO,NOMBRE_DE_EQUIPO,ESTRUC,RENTA,OBJETIVO,INTERVALO,PROF,Fec_Inic,Fec_Term,Días,NOTAS,Campo16,LLAVE,LLAVE1,LLAVE2,LLAVE3,Campo21,ELEM_PEP,LLAVE_DE_CRUCE) VALUES (@pre,@pozo,@ACTIVIDAD,@ACTIVIDAD_ESPECIFICA,@No_EQUIPO,@NOMBRE_DE_EQUIPO,@ESTRUC,@RENTA,@OBJETIVO,@INTERVALO,@PROF,@Fec_Inic,@Fec_Term,@Días,@NOTAS,@Campo16,@LLAVE,@LLAVE1,@LLAVE2,@LLAVE3,@Campo21,@ELEM_PEP,@LLAVE_DE_CRUCE)";
+                    OleDbCommand comando = new OleDbCommand(q, con);
+
+                    comando.Parameters.Clear();
+
+                    DateTime fecha_i = Convert.ToDateTime(row[11].ToString());
+                    DateTime fecha_f = Convert.ToDateTime(row[12].ToString());
+
+                    comando.Parameters.AddWithValue("@pre", row[0].ToString());
+                    comando.Parameters.AddWithValue("@pozo", row[1].ToString());
+                    comando.Parameters.AddWithValue("@ACTIVIDAD", row[2].ToString());
+                    comando.Parameters.AddWithValue("@ACTIVIDAD_ESPECIFICA", row[3].ToString());
+                    comando.Parameters.AddWithValue("@No_EQUIPO", row[4].ToString());
+                    comando.Parameters.AddWithValue("@NOMBRE_DE_EQUIPO", row[5].ToString());
+                    comando.Parameters.AddWithValue("@ESTRUC", row[6].ToString());
+                    comando.Parameters.AddWithValue("@RENTA", row[7].ToString());
+                    comando.Parameters.AddWithValue("@OBJETIVO", row[8].ToString());
+                    comando.Parameters.AddWithValue("@INTERVALO", row[9].ToString());
+                    comando.Parameters.AddWithValue("@PROF", row[10].ToString());
+                    comando.Parameters.AddWithValue("@Fec_Inic", fecha_i);
+                    comando.Parameters.AddWithValue("@Fec_Term", fecha_f);
+                    comando.Parameters.AddWithValue("@Días", row[13].ToString());
+                    comando.Parameters.AddWithValue("@Campo16", row[14].ToString());
+                    comando.Parameters.AddWithValue("@NOTAS", row[15].ToString());
+                    comando.Parameters.AddWithValue("@LLAVE", row[16].ToString());
+                    comando.Parameters.AddWithValue("@LLAVE1", row[17].ToString());
+                    comando.Parameters.AddWithValue("@LLAVE2", row[18].ToString());
+                    comando.Parameters.AddWithValue("@LLAVE3", row[19].ToString());
+                    comando.Parameters.AddWithValue("@Campo21", row[20].ToString());
+                    comando.Parameters.AddWithValue("@ELEM_PEP", row[21].ToString());
+                    comando.Parameters.AddWithValue("@LLAVE_DE_CRUCE", row[22].ToString());
+
+                    comando.ExecuteNonQuery();
+
+
+
+                }
+                else if (catalogo == "Admon")
+                {
+                    string q = "INSERT INTO CatAdmon (Llave,Cve_Campo,ID_Asignacion,Des_Asignacion,Cve_Asignacion,Des_Campo,Cve_Proyecto,Des_Proyecto,Campo_Cab_Asig,Activo,Proy_Prog) VALUES (@Llave,@Cve_Campo,@ID_Asignacion,@Des_Asignacion,@Cve_Asignacion,@Des_Campo,@Cve_Proyecto,@Des_Proyecto,@Campo_Cab_Asig,@Activo,@Proy_Prog)";
+                    OleDbCommand comando = new OleDbCommand(q, con);
+
+                    comando.Parameters.Clear();
+
+                    comando.Parameters.AddWithValue("@Llave", row[0].ToString());
+                    comando.Parameters.AddWithValue("@Cve_Campo", row[1].ToString());
+                    comando.Parameters.AddWithValue("@ID_Asignacion", row[2].ToString());
+                    comando.Parameters.AddWithValue("@Des_Asignacion", row[3].ToString());
+                    comando.Parameters.AddWithValue("@Cve_Asignacion", row[4].ToString());
+                    comando.Parameters.AddWithValue("@Des_Campo", row[5].ToString());
+                    comando.Parameters.AddWithValue("@Cve_Proyecto", row[6].ToString());
+                    comando.Parameters.AddWithValue("@Des_Proyecto", row[7].ToString());
+                    comando.Parameters.AddWithValue("@Campo_Cab_Asig", row[8].ToString());
+                    comando.Parameters.AddWithValue("@Activo", row[9].ToString());
+                    comando.Parameters.AddWithValue("@Proy_Prog", row[10].ToString());
+
+                    comando.ExecuteNonQuery();
+
+                }
+                else if (catalogo == "AsigCampoPYIN")
+                {
+                    string q = "INSERT INTO CatAsigCampoPYIN (Campo_Cab_Asig,Subdirección,ID_Asignacion,Cve_Asignacion,Des_Asignacion,Cve_Campo,Des_Campo,Cve_Proyecto,Des_Proyecto,Campo10,Activo,Estatus,F_inicio,F_fin) VALUES (@Campo_Cab_Asig,@Subdirección,@ID_Asignacion,@Cve_Asignacion,@Des_Asignacion,@Cve_Campo,@Des_Campo,@Cve_Proyecto,@Des_Proyecto,@Campo10,@Activo,@Estatus,@F_inicio,@F_fin)";
+                    OleDbCommand comando = new OleDbCommand(q, con);
+
+                    comando.Parameters.Clear();
+
+                    DateTime fecha_i = Convert.ToDateTime(row[12].ToString());
+                    DateTime fecha_f = Convert.ToDateTime(row[13].ToString());
+
+                    comando.Parameters.AddWithValue("@Campo_Cab_Asig", row[0].ToString());
+                    comando.Parameters.AddWithValue("@Subdirección", row[1].ToString());
+                    comando.Parameters.AddWithValue("@ID_Asignacion", row[2].ToString());
+                    comando.Parameters.AddWithValue("@Cve_Asignacion", row[3].ToString());
+                    comando.Parameters.AddWithValue("@Des_Asignacion", row[4].ToString());
+
+                    comando.Parameters.AddWithValue("@Cve_Campo", row[5].ToString());
+                    comando.Parameters.AddWithValue("@Des_Campo", row[6].ToString());
+                    comando.Parameters.AddWithValue("@Cve_Proyecto", row[7].ToString());
+                    comando.Parameters.AddWithValue("@Des_Proyecto", row[8].ToString());
+                    comando.Parameters.AddWithValue("@Campo10", row[9].ToString());
+                    comando.Parameters.AddWithValue("@Activo", row[10].ToString());
+                    comando.Parameters.AddWithValue("@Estatus", row[11].ToString());
+                    comando.Parameters.AddWithValue("@F_inicio", fecha_i);
+                    comando.Parameters.AddWithValue("@F_fin", fecha_f);
+
+                    comando.ExecuteNonQuery();
+
+                }
+                else if (catalogo == "Contratos")
+                {
+                    string q = "INSERT INTO CatContratos (CONTRATO,RESERVA,Descripción_Contrato,FecIncContrato,FecVencContrato,POLITICAPAGO,COMPAÑÍA,PROVEEDOR,CONCATENAR) VALUES (@CONTRATO,@RESERVA,@Descripción_Contrato,@FecIncCont,@FecVencContrato,@POLITICAPAGO,@COMPAÑÍA,@PROVEEDOR,@CONCATENAR)";
+                    OleDbCommand comando = new OleDbCommand(q, con);
+
+                    comando.Parameters.Clear();
+
+                    //Agregado porque causa conflicto si el campo esta vacion porque es numerico en la base de datos
+                    var pol = row[5].ToString() == "" ? "0" : row[5].ToString();
+                    var pro = row[7].ToString() == "" ? "0" : row[7].ToString();
+
+                    comando.Parameters.AddWithValue("@CONTRATO", row[0].ToString());
+                    comando.Parameters.AddWithValue("@RESERVA", row[1].ToString());
+                    comando.Parameters.AddWithValue("@Descripción_Contrato", row[2].ToString());
+                    comando.Parameters.AddWithValue("@FecIncCont", row[3].ToString());
+                    comando.Parameters.AddWithValue("@FecVencContrato", row[4].ToString());
+                    comando.Parameters.AddWithValue("@POLITICAPAGO", pol);
+                    comando.Parameters.AddWithValue("@COMPAÑÍA", row[6].ToString());
+                    comando.Parameters.AddWithValue("@PROVEEDOR", pro);
+                    comando.Parameters.AddWithValue("@CONCATENAR", row[8].ToString());
+
+                    comando.ExecuteNonQuery();
+
+                }
+                else if (catalogo == "IdPozo")
+                {
+                    string q = "INSERT INTO CatIdPozo (Id,Pozo,IIP) VALUES (@Id,@Pozo,@IIP)";
+                    OleDbCommand comando = new OleDbCommand(q, con);
+
+                    comando.Parameters.Clear();
+
+                    Decimal id = row[0].ToString() == "" ? 0 : Convert.ToDecimal(row[0].ToString());
+
+                    comando.Parameters.AddWithValue("@Id", id);
+                    comando.Parameters.AddWithValue("@Pozo", row[1].ToString());
+                    comando.Parameters.AddWithValue("@IIP", row[2].ToString());
+
+                    comando.ExecuteNonQuery();
+
+                }
+                else if (catalogo == "LlaveControl")
+                {
+                    string q = "INSERT INTO CatLlaveControl (Id1,prott,PP,id_presentacion,ID,ID2) VALUES (@Id1,@prott,@PP,@id_presentacion,@ID,@ID2)";
+                    OleDbCommand comando = new OleDbCommand(q, con);
+
+                    comando.Parameters.Clear();
+
+                    Decimal id1 = row[0].ToString() == "" ? 0 : Convert.ToDecimal(row[0].ToString());
+
+                    comando.Parameters.AddWithValue("@Id1", id1);
+                    comando.Parameters.AddWithValue("@prott", row[1].ToString());
+                    comando.Parameters.AddWithValue("@PP", row[2].ToString());
+                    comando.Parameters.AddWithValue("@id_presentacion", row[3].ToString());
+                    comando.Parameters.AddWithValue("@ID", row[4].ToString());
+                    comando.Parameters.AddWithValue("@ID2", row[5].ToString());
+
+                    comando.ExecuteNonQuery();
+
+                }
+                else if (catalogo == "PPEquivalentes")
+                {
+                    string q = "INSERT INTO CatPPEquivalentes (Programa_anterior,Elemento_PEP_Anterior,Descripción_PP_Anterior,Programa_Vigente,Elemento_PEP,Descripción_PP) VALUES (@Programa_anterior,@Elemento_PEP_Anterior,@Descripción_PP_Anterior,@Programa_Vigente,@Elemento_PEP,@Descripción_PP)";
+                    OleDbCommand comando = new OleDbCommand(q, con);
+
+                    comando.Parameters.Clear();
+
+                    comando.Parameters.AddWithValue("@Programa_anterior", row[0].ToString());
+                    comando.Parameters.AddWithValue("@Elemento_PEP_Anterior", row[1].ToString());
+                    comando.Parameters.AddWithValue("@Descripción_PP_Anterior", row[2].ToString());
+                    comando.Parameters.AddWithValue("@Programa_Vigente", row[3].ToString());
+                    comando.Parameters.AddWithValue("@Elemento_PEP", row[4].ToString());
+                    comando.Parameters.AddWithValue("@Descripción_PP", row[5].ToString());
+                    comando.ExecuteNonQuery();
+                }
+                else if (catalogo == "Proyectos")
+                {
+                    string q = "INSERT INTO CatProyectos (PROYECTO,PYIN) VALUES (@PROYECTO,@PYIN)";
+                    OleDbCommand comando = new OleDbCommand(q, con);
+
+                    comando.Parameters.Clear();
+
+                    comando.Parameters.AddWithValue("@PROYECTO", row[0].ToString());
+                    comando.Parameters.AddWithValue("@PYIN", row[1].ToString());
+                    comando.ExecuteNonQuery();
+
+                }
+                else if (catalogo == "POZOADMON")
+                {
+                    string q = " INSERT INTO CatPOZOADMON (PROGRAMA, ELEMENTO_PEP, PRO_POZO, CONCATENAR, POZO, Soc_CO, Entidad_CP, Proy_Aval, PROY, EPEP_Descripcion, EPEP_Ind, EPEP_Cent, Prog_Inic, Prog_Term, Fecha, Prog, Tox, Campo,PTO) VALUES(@PROGRAMA, @ELEMENTO_PEP, @PRO_POZO, @CONCATENAR, @POZO, @Soc_CO, @Entidad_CP, @Proy_Aval, @PROY, @EPEP_Descripcion, @EPEP_Ind, @EPEP_Cent, @Prog_Inic, @Prog_Term, @Fecha, @Prog, @Tox, @Campo, @PTO)";
+
+                    OleDbCommand comando = new OleDbCommand(q, con);
+
+                    comando.Parameters.Clear();
+
+                    Decimal cent = row[11].ToString() == "" ? 0 : Convert.ToDecimal(row[11].ToString());
+                    DateTime fi = Convert.ToDateTime(row[12].ToString()); // Convert.ToDateTime(row[11].ToString());
+                    DateTime ff = Convert.ToDateTime(row[13].ToString()); // Convert.ToDateTime(row[12].ToString());
+
+                    comando.Parameters.AddWithValue("@PROGRAMA", row[0].ToString());
+                    comando.Parameters.AddWithValue("@ELEMENTO_PEP", row[1].ToString());
+                    comando.Parameters.AddWithValue("@PRO_POZO", row[2].ToString());
+                    comando.Parameters.AddWithValue("@CONCATENAR", row[3].ToString());
+                    comando.Parameters.AddWithValue("@POZO", row[4].ToString());
+                    comando.Parameters.AddWithValue("@Soc_CO", row[5].ToString());
+                    comando.Parameters.AddWithValue("@Entidad_CP", row[6].ToString());
+                    comando.Parameters.AddWithValue("@Proy_Aval", row[7].ToString());
+                    comando.Parameters.AddWithValue("@PROY", row[8].ToString());
+                    comando.Parameters.AddWithValue("@EPEP_Descripcion", row[9].ToString());
+                    comando.Parameters.AddWithValue("@EPEP_Ind", row[10].ToString());
+                    comando.Parameters.AddWithValue("@EPEP_Cent", cent);
+                    comando.Parameters.AddWithValue("@Prog_Inic", fi);
+                    comando.Parameters.AddWithValue("@Prog_Term", ff);
+                    comando.Parameters.AddWithValue("@Fecha", row[14].ToString());
+                    comando.Parameters.AddWithValue("@Prog", row[15].ToString());
+                    comando.Parameters.AddWithValue("@Tox", row[16].ToString());
+                    comando.Parameters.AddWithValue("@Campo", row[17].ToString());
+                    comando.Parameters.AddWithValue("@PTO", row[18].ToString());
+
+                    comando.ExecuteNonQuery();
+
+                }
+                else if (catalogo == "Supervisores")
+                {
+                    string q = "INSERT INTO CatSupervisores (USUARIO,FICHA) VALUES (@USUARIO,@FICHA)";
+                    OleDbCommand comando = new OleDbCommand(q, con);
+
+                    comando.Parameters.Clear();
+
+                    comando.Parameters.AddWithValue("@USUARIO", row[0].ToString());
+                    comando.Parameters.AddWithValue("@FICHA", row[1].ToString());
+                    comando.ExecuteNonQuery();
+
+                }
+
+                con.Close();
+                var alert = new RadDesktopAlert();
+                alert.Header = "NOTIFICACIÓN";
+                alert.Content = "El Cat" + catalogo + " fué actualizado con exito.";
+
+                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+                manager.ShowAlert(alert);
+
+            }
+            catch (Exception ex)
+            {
+
+                var alert = new RadDesktopAlert();
+                alert.Header = "NOTIFICACIÓN";
+                alert.Content = ex;
+                alert.CanAutoClose = false;
+
+                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+                manager.ShowAlert(alert);
+            }
+
+
+
+        }
+        #endregion
+
+
     }
+
 }
+
+
+
+
+

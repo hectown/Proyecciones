@@ -460,5 +460,19 @@ namespace ClarisaApp.Views
             btGuardar.Visibility = Visibility.Hidden;
             btCancelar.Visibility = Visibility.Hidden;
         }
+
+        private void gvData_RowEditEnded(object sender, GridViewRowEditEndedEventArgs e)
+        {
+
+            if (e.EditOperationType.ToString() == "Insert") {
+                
+                DataRowView row = (DataRowView)e.Row.Item;
+                Datos dt = new Datos();
+                dt.GuardarCatNewRow(row, cmbCatalogos.Text);
+            } else{
+
+            }
+           
+        }
     }
 }
