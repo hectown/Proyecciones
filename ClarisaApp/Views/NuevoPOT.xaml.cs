@@ -59,6 +59,7 @@ namespace ClarisaApp.Views
             if (a == true)
                 {
                 dat.CrearNuevoPOT(nombrePOTAjuste, inicio.ToString(), fin.ToString());
+                dat.CrearNuevoCostoPozos("CostoPozo"+txtNombre.Text);
                 this.Close();
             DataTable dtPOM = dat.ObtenerIdPOM(nombrePOT).Tables[0];
             decimal idPOM = 0;

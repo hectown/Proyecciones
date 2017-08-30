@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:ClarisaApp"
         mc:Ignorable="d"
         Title="Proyecciones" WindowState="Maximized"
-        VerticalAlignment="Top">
+        VerticalAlignment="Top"
+        >
     <telerik:RadBusyIndicator x:Name="radBusyIndicator">
         <Grid Background="White" >
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
