@@ -146,6 +146,36 @@ namespace ClarisaApp.DAL
                 return false;
             }
         }
+
+
+        //Costo pozos
+        public bool CrearNuevoCostoPozos(string sNombre)
+        {
+            try
+            {
+                OleDbConnection myConnection = new OleDbConnection("Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "\\BaseDeDatos.accdb");
+                myConnection.Open();
+                string strTemp = " Id AUTOINCREMENT primary key, EQUIPO Text(255), PLATAFORMA Text(255), POZO Text(255), TOTAL Number";
+                OleDbCommand myCommand = new OleDbCommand();
+                myCommand.Connection = myConnection;
+                myCommand.CommandText = "CREATE TABLE " + sNombre + "(" + strTemp + ")";
+                myCommand.ExecuteNonQuery();
+                myCommand.Connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                var alert = new RadDesktopAlert();
+                alert.Header = "NOTIFICACIÓN";
+                alert.Content = ex.Message;
+                alert.CanAutoClose = false;
+
+                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+                manager.ShowAlert(alert);
+                return false;
+            }
+        }
+
         public void CrearBaseDatos(string sNombre)
         {
             
