@@ -100,6 +100,7 @@ namespace ClarisaApp.Views
                 decimal FechaInicio = 0;
                 decimal FechaFin = 0;
                 string sNombre = "";
+                decimal idEjecutor = Convert.ToDecimal(lblTitulo.Content);
 
                 foreach (DataRow row in dt.Rows)
                 {
@@ -108,7 +109,7 @@ namespace ClarisaApp.Views
                     FechaFin = Convert.ToDecimal(row["Fecha_Fin"]);
                 }
 
-
+                datos.BorrarEjecutor(Convert.ToDecimal(lblPOM.Content),idEjecutor,sNombre);
 
             }
             else

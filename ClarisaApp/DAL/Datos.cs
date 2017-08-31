@@ -912,6 +912,50 @@ namespace ClarisaApp.DAL
         }
 
 
+        public void BorrarEjecutor(decimal idPOM, decimal idEjecutor, string Tabla)
+        {
+            try
+            {
+
+                string q = "";
+                OleDbConnection con = new OleDbConnection();
+                OleDbCommand comando;
+                con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "\\BaseDeDatos.accdb";
+
+                con.Open();
+
+
+                //INSERTA DATOS DEL EXCEL DEL EJECUTOR
+                q = "DELETE FROM "+Tabla+ " WHERE idEjecutor="+idEjecutor+" AND idPOM="+idPOM;
+                comando = new OleDbCommand(q, con);
+
+              
+                con.Close();
+                var alert = new RadDesktopAlert();
+                alert.Header = "NOTIFICACIÓN";
+                alert.Content = "El Ejecutor fué borrado con exito.";
+
+                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+                manager.ShowAlert(alert);
+
+            }
+            catch (Exception ex)
+            {
+
+                var alert = new RadDesktopAlert();
+                alert.Header = "NOTIFICACIÓN";
+                alert.Content = ex;
+                alert.CanAutoClose = false;
+
+                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+                manager.ShowAlert(alert);
+            }
+
+
+
+        }
+
+
         public DataSet ObtenerEjecutor(decimal idEjecutor)
         {
             string query = "SELECT NO_CONTRATO,NO_RESERVA,FICHA_SUPERVISOR,AÑO,MOV_EQ,EQUIPO,PLATAFORMA,POZO,ACTIVIDAD,ACT_ESPECIFICA,FECHA_I,FECHA_T,C_GESTOR,PROY,PROGRAMA_PRESUPUESTARIO,POSPRE,MONEDA,ID_REGISTRO,ENE,FEB,MAR,ABR,MAY,JUN,JUL,AGO,SEP,OCT,NOV,DIC,TOTAL FROM Ejecutores WHERE Id_Ejecutor=@idEjecutor";
