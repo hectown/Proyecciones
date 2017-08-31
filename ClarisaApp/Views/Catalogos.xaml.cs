@@ -20,6 +20,7 @@ using Microsoft.Office;
 using Microsoft.Win32;
 using System.Threading;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace ClarisaApp.Views
 {
@@ -89,6 +90,7 @@ namespace ClarisaApp.Views
             {
                 try
                 {
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("es-MX");
                     gvData.ItemsSource = dt.ObtenerCatalogos(cmbCatalogos.Text).Tables[0].AsDataView();
                 }
                 catch(Exception ex)
@@ -313,7 +315,7 @@ namespace ClarisaApp.Views
                     //double douCellData;
                     int rowCnt = 0;
                     int colCnt = 0;
-
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("es-MX");
                     DataTable dt = new DataTable();
                     for (colCnt = 1; colCnt <= excelRange.Columns.Count; colCnt++)
                     {

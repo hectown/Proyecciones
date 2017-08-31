@@ -16,6 +16,8 @@ using System.Data;
 using System.Data.OleDb;
 using Telerik.Windows.Controls;
 using ClarisaApp.Views;
+using System.Globalization;
+using System.Threading;
 
 namespace ClarisaApp
 {
@@ -30,7 +32,9 @@ namespace ClarisaApp
         public MainWindow()
         {
             InitializeComponent();
-       
+
+          
+
         }
 
         public RadBusyIndicator radOcupado

@@ -511,8 +511,8 @@ namespace ClarisaApp.DAL
                         comando.Parameters.AddWithValue("@CONTRATO", row[0].ToString());
                         comando.Parameters.AddWithValue("@RESERVA",  row[1].ToString());
                         comando.Parameters.AddWithValue("@Descripción_Contrato", row[2].ToString());
-                        comando.Parameters.AddWithValue("@FecIncCont", row[3].ToString());
-                        comando.Parameters.AddWithValue("@FecVencContrato", row[4].ToString());
+                        comando.Parameters.AddWithValue("@FecIncCont", Convert.ToDateTime(row[3].ToString()));
+                        comando.Parameters.AddWithValue("@FecVencContrato", Convert.ToDateTime(row[4].ToString()));
                         comando.Parameters.AddWithValue("@POLITICAPAGO", pol);
                         comando.Parameters.AddWithValue("@COMPAÑÍA", row[6].ToString());
                         comando.Parameters.AddWithValue("@PROVEEDOR", pro);
