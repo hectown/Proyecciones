@@ -60,11 +60,13 @@ namespace ClarisaApp.Views
             {
                 lblTitulo.Content = "Actualmente no hay ningun ejecutor calendarizado.";
                 gvData.Visibility= Visibility.Hidden;
-                gvDataPager.Visibility = Visibility.Hidden;
+                //gvDataPager.Visibility = Visibility.Hidden;
+                lbl.Visibility = Visibility.Hidden;
 
             }else
             {
                 gvData.ItemsSource = datos.ObtenerRequerido(sNombre).Tables[0];
+                gvData.Columns[0].IsVisible = false;
                 nameBD = sNombre;
             }
            
