@@ -47,8 +47,8 @@
 
 
             <telerik:RadGridView Grid.Row="1" Name="gvData" RowLoaded="gvData_RowLoaded" CellEditEnded="gvData_CellEditEnded"/>
-            <telerik:RadDataPager Grid.Row="2" Name="gvDataPager" Source="{Binding Items,ElementName=gvData}" PageSize="20"/>
-
+           <!-- <telerik:RadDataPager Grid.Row="2" Name="gvDataPager" Source="{Binding Items,ElementName=gvData}" PageSize="20"/>-->
+            <telerik:Label Name="lbl" Grid.Column="0" Grid.Row="2" Content="*Verifique si el nulo en las celdas marcadas en rojo son correctas." />
         </Grid>
     </Grid>
 </Page>

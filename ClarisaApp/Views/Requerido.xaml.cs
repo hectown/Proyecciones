@@ -62,8 +62,10 @@ namespace ClarisaApp.Views
                 gvData.Visibility= Visibility.Hidden;
                 //gvDataPager.Visibility = Visibility.Hidden;
                 lbl.Visibility = Visibility.Hidden;
+                btExportar.Visibility = Visibility.Hidden;
 
-            }else
+            }
+            else
             {
                 gvData.ItemsSource = datos.ObtenerRequerido(sNombre).Tables[0];
                 gvData.Columns[0].IsVisible = false;

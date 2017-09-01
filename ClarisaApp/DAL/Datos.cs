@@ -912,7 +912,7 @@ namespace ClarisaApp.DAL
         }
 
 
-        public void BorrarEjecutor(decimal idPOM, decimal idEjecutor, string Tabla)
+        public bool BorrarEjecutor(decimal idPOM, decimal idEjecutor, string Tabla)
         {
             try
             {
@@ -926,18 +926,13 @@ namespace ClarisaApp.DAL
 
 
                 //INSERTA DATOS DEL EXCEL DEL EJECUTOR
-                q = "DELETE FROM "+Tabla+ " WHERE idEjecutor="+idEjecutor+" AND idPOM="+idPOM;
+                q = "DELETE FROM "+Tabla+ " WHERE idEjecutores="+idEjecutor+" AND idPOM="+idPOM;
                 comando = new OleDbCommand(q, con);
-
+                comando.ExecuteNonQuery();
               
                 con.Close();
-                var alert = new RadDesktopAlert();
-                alert.Header = "NOTIFICACIÓN";
-                alert.Content = "El Ejecutor fué borrado con exito.";
-
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
-                manager.ShowAlert(alert);
-
+              
+                return true;
             }
             catch (Exception ex)
             {
@@ -949,6 +944,99 @@ namespace ClarisaApp.DAL
 
                 RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
+                return false;
+            }
+
+
+
+        }
+
+
+
+        public bool BorrarEjecutoresTabla(decimal idPOM, decimal idEjecutor)
+        {
+            try
+            {
+
+                string q = "";
+                OleDbConnection con = new OleDbConnection();
+                OleDbCommand comando;
+                con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "\\BaseDeDatos.accdb";
+
+                con.Open();
+
+
+                //INSERTA DATOS DEL EXCEL DEL EJECUTOR
+                q = "DELETE FROM Ejecutores WHERE Id_Ejecutor=" + idEjecutor + " AND Id_POM=" + idPOM;
+                comando = new OleDbCommand(q, con);
+                comando.ExecuteNonQuery();
+
+
+                con.Close();
+               
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                var alert = new RadDesktopAlert();
+                alert.Header = "NOTIFICACIÓN";
+                alert.Content = ex;
+                alert.CanAutoClose = false;
+
+                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+                manager.ShowAlert(alert);
+                return false;
+            }
+
+
+
+        }
+
+
+        public bool BorrarEjecutoresEstructura(decimal idPOM, decimal idEjecutor)
+        {
+            try
+            {
+
+                string q = "";
+                OleDbConnection con = new OleDbConnection();
+                OleDbCommand comando;
+                con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "\\BaseDeDatos.accdb";
+
+                con.Open();
+
+
+                //INSERTA DATOS DEL EXCEL DEL EJECUTOR
+                q = "DELETE FROM CatProceso WHERE idCatPOM_Ejecutores=" + idEjecutor + " AND idCatPom=" + idPOM;
+                comando = new OleDbCommand(q, con);
+                comando.ExecuteNonQuery();
+
+
+                con.Close();
+
+                var alert = new RadDesktopAlert();
+                alert.Header = "NOTIFICACIÓN";
+                alert.Content ="El ejecutor fué borrado satisfactoriamente.";
+               
+
+                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+                manager.ShowAlert(alert);
+                
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                var alert = new RadDesktopAlert();
+                alert.Header = "NOTIFICACIÓN";
+                alert.Content = ex;
+                alert.CanAutoClose = false;
+
+                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+                manager.ShowAlert(alert);
+                return false;
             }
 
 
