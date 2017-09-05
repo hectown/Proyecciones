@@ -839,45 +839,70 @@ namespace ClarisaApp.DAL
                 q = "INSERT INTO Ejecutores (Id_Ejecutor,Id_POM,NO_CONTRATO,NO_RESERVA,FICHA_SUPERVISOR,AÑO,MOV_EQ,EQUIPO,PLATAFORMA,POZO,ACTIVIDAD,ACT_ESPECIFICA,FECHA_I,FECHA_T,C_GESTOR,PROY,PROGRAMA_PRESUPUESTARIO,POSPRE,MONEDA,ID_REGISTRO,ENE,FEB,MAR,ABR,MAY,JUN,JUL,AGO,SEP,OCT,NOV,DIC,TOTAL) VALUES (@Id_Ejecutor,@Id_POM,@NO_CONTRATO,@NO_RESERVA,@FICHA_SUPERVISOR,@AÑO,@MOV_EQ,@EQUIPO,@PLATAFORMA,@POZO,@ACTIVIDAD,@ACT_ESPECIFICA,@FECHA_I,@FECHA_T,@C_GESTOR,@PROY,@PROGRAMA_PRESUPUESTARIO,@POSPRE,@MONEDA,@ID_REGISTRO,@ENE,@FEB,@MAR,@ABR,@MAY,@JUN,@JUL,@AGO,@SEP,@OCT,@NOV,@DIC,@TOTAL)";
                     comando = new OleDbCommand(q, con);
 
-                    foreach (var item in grid.Items)
-                    {
 
-                        var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
-                        comando.Parameters.Clear();
+                var itemsSource = grid.ItemsSource as DataTable;
+
+                foreach (DataRow row in itemsSource.Rows)
+                {
+
+                    //foreach (var item in grid.Items)
+                    //{
+
+                        //var row = grid.ItemContainerGenerator.ContainerFromItem(item) as GridViewRow;
+                        //DataRowView row = (DataRowView)item;
+
+                    DateTime _fecha_i = Convert.ToDateTime(row[10]);
+                    DateTime _fecha_t = Convert.ToDateTime(row[11]);
+
+                    decimal _ene = Convert.ToDecimal(row[18]);
+                    decimal _feb = Convert.ToDecimal(row[19]);
+                    decimal _mar = Convert.ToDecimal(row[20]);
+                    decimal _abr = Convert.ToDecimal(row[21]);
+                    decimal _may = Convert.ToDecimal(row[22]);
+                    decimal _jun = Convert.ToDecimal(row[23]);
+                    decimal _jul = Convert.ToDecimal(row[24]);
+                    decimal _ago = Convert.ToDecimal(row[25]);
+                    decimal _sep = Convert.ToDecimal(row[26]);
+                    decimal _oct = Convert.ToDecimal(row[27]);
+                    decimal _nov = Convert.ToDecimal(row[28]);
+                    decimal _dic = Convert.ToDecimal(row[29]);
+                    decimal _tot = Convert.ToDecimal(row[30]);
+
+                    comando.Parameters.Clear();
                         comando.Parameters.AddWithValue("@Id_Ejecutor", idEjecutores);
                         comando.Parameters.AddWithValue("@Id_POM", idPOM);
-                        comando.Parameters.AddWithValue("@NO_CONTRATO", Convert.ToString(((GridViewCell)(row.Cells[0])).Value));
-                        comando.Parameters.AddWithValue("@NO_RESERVA", Convert.ToString(((GridViewCell)(row.Cells[1])).Value));
-                        comando.Parameters.AddWithValue("@FICHA_SUPERVISOR", Convert.ToString(((GridViewCell)(row.Cells[2])).Value));
-                        comando.Parameters.AddWithValue("@AÑO", Convert.ToString(((GridViewCell)(row.Cells[3])).Value));
-                        comando.Parameters.AddWithValue("@MOV_EQ", Convert.ToString(((GridViewCell)(row.Cells[4])).Value));
-                        comando.Parameters.AddWithValue("@EQUIPO", Convert.ToString(((GridViewCell)(row.Cells[5])).Value));
-                        comando.Parameters.AddWithValue("@PLATAFORMA", Convert.ToString(((GridViewCell)(row.Cells[6])).Value));
-                        comando.Parameters.AddWithValue("@POZO", Convert.ToString(((GridViewCell)(row.Cells[7])).Value));
-                        comando.Parameters.AddWithValue("@ACTIVIDAD", Convert.ToString(((GridViewCell)(row.Cells[8])).Value));
-                        comando.Parameters.AddWithValue("@ACT_ESPECIFICA", Convert.ToString(((GridViewCell)(row.Cells[9])).Value));
+                        comando.Parameters.AddWithValue("@NO_CONTRATO", row[0].ToString());
+                        comando.Parameters.AddWithValue("@NO_RESERVA", row[1].ToString());
+                        comando.Parameters.AddWithValue("@FICHA_SUPERVISOR", row[2].ToString());
+                        comando.Parameters.AddWithValue("@AÑO", row[3].ToString());
+                        comando.Parameters.AddWithValue("@MOV_EQ", row[4].ToString());
+                        comando.Parameters.AddWithValue("@EQUIPO", row[5].ToString());
+                        comando.Parameters.AddWithValue("@PLATAFORMA", row[6].ToString());
+                        comando.Parameters.AddWithValue("@POZO", row[7].ToString());
+                        comando.Parameters.AddWithValue("@ACTIVIDAD", row[8].ToString());
+                        comando.Parameters.AddWithValue("@ACT_ESPECIFICA", row[9].ToString());
 
-                    comando.Parameters.AddWithValue("@FECHA_I", Convert.ToDateTime(((GridViewCell)(row.Cells[10])).Value));
-                    comando.Parameters.AddWithValue("@FECHA_T", Convert.ToDateTime(((GridViewCell)(row.Cells[11])).Value));
-                    comando.Parameters.AddWithValue("@C_GESTOR", Convert.ToString(((GridViewCell)(row.Cells[12])).Value));
-                    comando.Parameters.AddWithValue("@PROY", Convert.ToString(((GridViewCell)(row.Cells[13])).Value));
-                    comando.Parameters.AddWithValue("@PROGRAMA_PRESUPUESTARIO", Convert.ToString(((GridViewCell)(row.Cells[14])).Value));
-                    comando.Parameters.AddWithValue("@POSPRE", Convert.ToString(((GridViewCell)(row.Cells[15])).Value));
-                    comando.Parameters.AddWithValue("@MONEDA", Convert.ToString(((GridViewCell)(row.Cells[16])).Value));
-                    comando.Parameters.AddWithValue("@ID_REGISTRO", Convert.ToString(((GridViewCell)(row.Cells[17])).Value));
-                    comando.Parameters.AddWithValue("@ENE", Convert.ToDecimal(((GridViewCell)(row.Cells[18])).Value));
-                    comando.Parameters.AddWithValue("@FEB", Convert.ToDecimal(((GridViewCell)(row.Cells[19])).Value));
-                    comando.Parameters.AddWithValue("@MAR", Convert.ToDecimal(((GridViewCell)(row.Cells[20])).Value));
-                    comando.Parameters.AddWithValue("@ABR", Convert.ToDecimal(((GridViewCell)(row.Cells[21])).Value));
-                    comando.Parameters.AddWithValue("@MAY", Convert.ToDecimal(((GridViewCell)(row.Cells[22])).Value));
-                    comando.Parameters.AddWithValue("@JUN", Convert.ToDecimal(((GridViewCell)(row.Cells[23])).Value));
-                    comando.Parameters.AddWithValue("@JUL", Convert.ToDecimal(((GridViewCell)(row.Cells[24])).Value));
-                    comando.Parameters.AddWithValue("@AGO", Convert.ToDecimal(((GridViewCell)(row.Cells[25])).Value));
-                    comando.Parameters.AddWithValue("@SEP", Convert.ToDecimal(((GridViewCell)(row.Cells[26])).Value));
-                    comando.Parameters.AddWithValue("@OCT", Convert.ToDecimal(((GridViewCell)(row.Cells[27])).Value));
-                    comando.Parameters.AddWithValue("@NOV", Convert.ToDecimal(((GridViewCell)(row.Cells[28])).Value));
-                    comando.Parameters.AddWithValue("@DIC", Convert.ToDecimal(((GridViewCell)(row.Cells[29])).Value));
-                    comando.Parameters.AddWithValue("@TOTAL", Convert.ToDecimal(((GridViewCell)(row.Cells[30])).Value));
+                    comando.Parameters.AddWithValue("@FECHA_I", _fecha_i);
+                    comando.Parameters.AddWithValue("@FECHA_T", _fecha_t);
+                    comando.Parameters.AddWithValue("@C_GESTOR", row[12].ToString());
+                    comando.Parameters.AddWithValue("@PROY", row[13].ToString());
+                    comando.Parameters.AddWithValue("@PROGRAMA_PRESUPUESTARIO", row[14].ToString());
+                    comando.Parameters.AddWithValue("@POSPRE", row[15].ToString());
+                    comando.Parameters.AddWithValue("@MONEDA", row[16].ToString());
+                    comando.Parameters.AddWithValue("@ID_REGISTRO", row[17].ToString());
+                    comando.Parameters.AddWithValue("@ENE", _ene);
+                    comando.Parameters.AddWithValue("@FEB", _feb);
+                    comando.Parameters.AddWithValue("@MAR", _mar);
+                    comando.Parameters.AddWithValue("@ABR", _abr);
+                    comando.Parameters.AddWithValue("@MAY", _may);
+                    comando.Parameters.AddWithValue("@JUN", _jun);
+                    comando.Parameters.AddWithValue("@JUL", _jul);
+                    comando.Parameters.AddWithValue("@AGO", _ago);
+                    comando.Parameters.AddWithValue("@SEP", _sep);
+                    comando.Parameters.AddWithValue("@OCT", _oct);
+                    comando.Parameters.AddWithValue("@NOV", _nov);
+                    comando.Parameters.AddWithValue("@DIC", _dic);
+                    comando.Parameters.AddWithValue("@TOTAL", _tot);
 
 
 
