@@ -95,7 +95,8 @@ namespace ClarisaApp.Views
 
         private void btCostoPozo_Click(object sender, RoutedEventArgs e)
         {
-              new CostoPozos().Show();
+            
+              new CostoPozos(Convert.ToDecimal(lblPOM.Content)).Show();
         }
 
     }

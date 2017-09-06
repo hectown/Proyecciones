@@ -7,48 +7,49 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Requerido">
+    <telerik:RadBusyIndicator x:Name="radBusyIndicator">
+        <Grid>
 
-    <Grid>
+            <Grid Background="White">
 
-        <Grid Background="White">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-
-
-
-            <Grid Grid.Row="0" Margin="0,0,0,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
 
-                <telerik:Label Name="lblTitulo" Grid.Column="0" Grid.Row="1" />
-                <telerik:Label Name="lblPOM" Grid.Column="0" Grid.Row="1" />
-                <telerik:RadButton Name="btExportar" Grid.Column="1" Grid.Row="1" Content="Exportar" Width="150" Margin="10,0,0,0" Background="Green" Click="btnExportAsync_Click"/>
 
+                <Grid Grid.Row="0" Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+
+                    <telerik:Label Name="lblTitulo" Grid.Column="0" Grid.Row="1" />
+                    <telerik:Label Name="lblPOM" Grid.Column="0" Grid.Row="1" />
+                    <telerik:RadButton Name="btExportar" Grid.Column="1" Grid.Row="1" Content="Exportar" Width="150" Margin="10,0,0,0" Background="Green" Click="btnExportAsync_Click"/>
+
+                </Grid>
+
+
+                <telerik:RadGridView Grid.Row="1" Name="gvData" RowLoaded="gvData_RowLoaded" CellEditEnded="gvData_CellEditEnded" CanUserResizeColumns="False"  CanUserFreezeColumns="False" DataLoadMode="Asynchronous" GroupRenderMode="Flat" ValidatesOnDataErrors="InEditMode" />
+                <telerik:RadDataPager Grid.Row="2" Name="gvDataPager" Source="{Binding Items,ElementName=gvData}" PageSize="20"/>
+                <telerik:Label Name="lbl" Grid.Column="0" Grid.Row="3" Content="*Verifique si el nulo en las celdas marcadas en rojo son correctas." />
             </Grid>
-
-
-            <telerik:RadGridView Grid.Row="1" Name="gvData" RowLoaded="gvData_RowLoaded" CellEditEnded="gvData_CellEditEnded"/>
-           <!-- <telerik:RadDataPager Grid.Row="2" Name="gvDataPager" Source="{Binding Items,ElementName=gvData}" PageSize="20"/>-->
-            <telerik:Label Name="lbl" Grid.Column="0" Grid.Row="2" Content="*Verifique si el nulo en las celdas marcadas en rojo son correctas." />
         </Grid>
-    </Grid>
+    </telerik:RadBusyIndicator>
 </Page>

@@ -47,8 +47,8 @@ namespace ClarisaApp.Views
             llenarGridEjecutores(idEjecutor);
             lblTitulo.Content = idEjecutor;
             lblPOM.Content = idPOM;
-         
 
+           
         }
 
 

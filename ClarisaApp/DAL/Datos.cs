@@ -1141,6 +1141,8 @@ namespace ClarisaApp.DAL
         }
 
 
+        RadDesktopAlertManager manager = new RadDesktopAlertManager();
+
         public void CalendarizarEjecutor1(decimal idEjecutor, decimal idPOM, decimal FechaIni, decimal FechaFin, string sNombre)
         {
             try
@@ -1178,7 +1180,6 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA ELEMENTO PEP EJECUTORES CALENDARIZADOS 1 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1226,7 +1227,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA ELEMENTO PEP EJECUTORES CALENDARIZADOS 2 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+            //    RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1273,7 +1274,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA ELEMENTO PEP EJECUTORES CALENDARIZADOS 3 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+            //    RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1320,7 +1321,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA ACTIVIDAD EJECUTORES CALENDARIZADOS 4 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+            //    RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1367,7 +1368,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA DESCRIPCION ELEMENTO PEP EJECUTORES CALENDARIZADOS 5 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+            //    RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1414,7 +1415,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA DESCRIPCION ELEMENTO PEP EJECUTORES CALENDARIZADOS 6 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+          //      RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1459,7 +1460,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA ACTIVIDAD PH EJECUTORES CALENDARIZADOS 7 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+          //      RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1503,7 +1504,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA CLASIF EJECUTOR EJECUTORES CALENDARIZADOS 8 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+            //    RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1547,7 +1548,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA PROYECTOS EJECUTORES CALENDARIZADOS 9 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+          //      RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1593,7 +1594,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA LLLAVE CONTROL EJECUTORES CALENDARIZADOS 10 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+          //      RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1641,7 +1642,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA CON ORIGEN EJECUTORES CALENDARIZADOS 12 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+         //       RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1686,7 +1687,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA CLAVE CAMPO EJECUTORES CALENDARIZADOS 12 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+       //         RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1732,7 +1733,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA ELEMENTO PEP EJECUTORES CALENDARIZADOS 13 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+          //      RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1776,7 +1777,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA CONTRATO EJECUTORES CALENDARIZADOS 14 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+        //        RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1821,7 +1822,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA DESCRIPCION CONTRATO EJECUTORES CALENDARIZADOS 15 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+            //    RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1868,7 +1869,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA ID ASIGNACION EJECUTORES CALENDARIZADOS 16 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+           //     RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1914,7 +1915,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA POLITICA PAGO NULA EJECUTORES CALENDARIZADOS 17 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+        //        RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -1960,7 +1961,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: SUMA TOTAL DEVENGADO EJECUTORES CALENDARIZADOS 18 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+          //      RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2004,7 +2005,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA ACTIVIDAD ESPECIFICA NULA EJECUTORES CALENDARIZADOS 19 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+          //      RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2049,7 +2050,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA EJECUTORES CALENDARIZADOS 20 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+             //   RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2093,7 +2094,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA EJECUTORES CALENDARIZADOS 21 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+             //   RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2137,7 +2138,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA EJECUTORES CALENDARIZADOS 22 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+            //    RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2180,7 +2181,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA EJECUTORES CALENDARIZADOS 23 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+           //     RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2225,7 +2226,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA EJECUTORES CALENDARIZADOS 24 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+            //    RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2271,7 +2272,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA EJECUTORES CALENDARIZADOS 25 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+           //     RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2314,7 +2315,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA EJECUTORES CALENDARIZADOS 26 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+            //    RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2401,7 +2402,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA POLITICA DE PAGO 180 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+            //    RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2489,7 +2490,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA POLITICA DE PAGO 120 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+           //     RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2574,7 +2575,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA POLITICA DE PAGO 90 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+           //     RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2659,7 +2660,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA POLITICA DE PAGO 60 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+             //   RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2744,7 +2745,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA POLITICA DE PAGO 45 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+             //   RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2830,7 +2831,7 @@ namespace ClarisaApp.DAL
                 alert.Content = "ERROR: ACTUALIZA POLITICA DE PAGO 2030 " + ex;
                 alert.CanAutoClose = false;
 
-                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+           //     RadDesktopAlertManager manager = new RadDesktopAlertManager();
                 manager.ShowAlert(alert);
             }
 
@@ -2943,6 +2944,15 @@ namespace ClarisaApp.DAL
             
         }
 
+        public DataSet ObtenerCostoPozo(string nombreTabla)
+        {
+            string query = @"SELECT POZO, TOTAL FROM CostoPozo"+nombreTabla+" ORDER BY POZO ASC";
+
+            OleDbParameter[] opParametros = { };
+
+            return fSQL(query, opParametros);
+
+        }
 
         public DataSet CrearTablaAjustePozoSuma(decimal idPOM, string nombreTabla, decimal FechaIni, decimal FechaFin)
         {
@@ -3016,7 +3026,86 @@ group by Id, EjecutoresCalendarizados.pozo )  AS [%$##@_Alias];
 
         }
 
+        public void BorrarCosto(string Tabla)
+        {
+            try
+            {
+                OleDbConnection con = new OleDbConnection();
+                con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "\\BaseDeDatos.accdb";
 
+                con.Open();
+
+                string q = "Delete from " + Tabla;
+                OleDbCommand comando = new OleDbCommand(q, con);
+                comando.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                var alert = new RadDesktopAlert();
+                alert.Header = "NOTIFICACIÓN";
+                alert.Content = ex;
+                alert.CanAutoClose = false;
+
+                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+                manager.ShowAlert(alert);
+            }
+        }
+
+        public void GuardarCosto(RadGridView grid, string sNombre)
+        {
+            try
+            {
+
+
+                OleDbConnection con = new OleDbConnection();
+                con.ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "\\BaseDeDatos.accdb";
+
+                con.Open();
+
+              
+                string q = "INSERT INTO CostoPozo"+sNombre+" (POZO,TOTAL) VALUES (@pozo,@total)";
+
+                OleDbCommand comando = new OleDbCommand(q, con);
+
+                var itemsSource = grid.ItemsSource as IEnumerable;
+
+                foreach (var item in itemsSource)
+                {
+                    comando.Parameters.Clear();
+
+                    DataRowView row = (DataRowView)item;
+                  
+
+                    comando.Parameters.AddWithValue("@pozo", row[0].ToString());
+                    comando.Parameters.AddWithValue("@total", Convert.ToDecimal(row[1]));
+                   
+
+                    comando.ExecuteNonQuery();
+                }
+
+
+
+                con.Close();
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                var alert = new RadDesktopAlert();
+                alert.Header = "NOTIFICACIÓN";
+                alert.Content = "ERROR: INSERTA DATOS Costo Pozo " + ex;
+                alert.CanAutoClose = false;
+
+                RadDesktopAlertManager manager = new RadDesktopAlertManager();
+                manager.ShowAlert(alert);
+            }
+
+
+
+        }
 
 
 

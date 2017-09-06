@@ -43,6 +43,8 @@ namespace ClarisaApp.Views
 
        public void ObtenerRequerido(decimal idPOM)
         {
+            radBusyIndicator.IsBusy = true;
+
             DAL.Datos datos = new DAL.Datos();
             DataTable dt= datos.ObtenerAñosPOM(idPOM).Tables[0];
             decimal FechaInicio = 0;
@@ -60,16 +62,17 @@ namespace ClarisaApp.Views
             {
                 lblTitulo.Content = "Actualmente no hay ningun ejecutor calendarizado.";
                 gvData.Visibility= Visibility.Hidden;
-                //gvDataPager.Visibility = Visibility.Hidden;
+                gvDataPager.Visibility = Visibility.Hidden;
                 lbl.Visibility = Visibility.Hidden;
                 btExportar.Visibility = Visibility.Hidden;
-
+                radBusyIndicator.IsBusy = false;
             }
             else
             {
                 gvData.ItemsSource = datos.ObtenerRequerido(sNombre).Tables[0];
-                gvData.Columns[0].IsVisible = false;
+              
                 nameBD = sNombre;
+                radBusyIndicator.IsBusy = false;
             }
            
            
@@ -91,6 +94,8 @@ namespace ClarisaApp.Views
             {
                 using (Stream stream = dialog.OpenFile())
                 {
+                    
+
                     gvData.Export(stream,
                      new GridViewExportOptions()
                      {
