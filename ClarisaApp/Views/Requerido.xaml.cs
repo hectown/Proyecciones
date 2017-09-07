@@ -94,16 +94,20 @@ namespace ClarisaApp.Views
             {
                 using (Stream stream = dialog.OpenFile())
                 {
+                                        
+                    DataTable _items= gvData.ItemsSource as DataTable;
                     
-
                     gvData.Export(stream,
                      new GridViewExportOptions()
                      {
+                         
                          Format = ExportFormat.Html,
+                         Items = _items.Rows,    //gvDataPager.PagedSource as IEnumerable<DataRow>, //gvData.ItemsSource as IEnumerable<GridView>,
                          ShowColumnHeaders = true,
                          ShowColumnFooters = true,
                          ShowGroupFooters = false,
                      });
+                                        
                 }
             }
         }
